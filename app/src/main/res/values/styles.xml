@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="_AppTheme" parent="Theme.AppCompat.Light">
+
+        <item name="android:buttonStyle">@style/ButtonAppTheme</item>
+
+        <item name="android:imageButtonStyle">@style/ImageButtonAppTheme</item>
+
+    </style>
+
 </resources>
