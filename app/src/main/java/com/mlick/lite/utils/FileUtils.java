@@ -5,7 +5,6 @@ import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -16,7 +15,14 @@ import java.io.IOException;
 public class FileUtils {
 
 
-    private static void savaFiles(String dirName, String fileName) {
+    /**
+     * 保存内容到文件中
+     *
+     * @param dirName  目录名字
+     * @param fileName 文件名字
+     * @param comtent  要存储的内容
+     */
+    private static void savaFiles(String dirName, String fileName, String comtent) {
 //        String fileName = "crash-test" + ".log";
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             try {
@@ -28,19 +34,19 @@ public class FileUtils {
                     isCreadteSuccess = dir.mkdirs();
                 }
                 if (isCreadteSuccess) {
-                    FileOutputStream fos = new FileOutputStream(new File(dir,
-                            fileName));
-                    fos.write("test".toString().getBytes());
+                    FileOutputStream fos = new FileOutputStream(new File(dir, fileName));
+                    fos.write(comtent.getBytes());
                     fos.close();
                 }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * 得到文件的绝对路径
+     */
     public String getFileAbsPath(String dirName, Context context) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + dirName + File.separator;
@@ -49,11 +55,24 @@ public class FileUtils {
         }
     }
 
+    /**
+     * 得到文件的绝对路径
+     *
+     * @param dirName 目录的名字
+     * @return 返回含有系统路径名字
+     */
     public String getFileAbsPath(String dirName) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + dirName + File.separator;
         } else {
             return "/data/data/" + dirName;
         }
+    }
+
+    /**
+     * @return 得到系统的决定路径
+     */
+    public String getSysAbsPath() {
+        return getFileAbsPath("");
     }
 }
