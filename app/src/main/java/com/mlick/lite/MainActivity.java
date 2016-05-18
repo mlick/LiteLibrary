@@ -13,10 +13,8 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.hello_tv)
-    TextView helloTv;
-    @BindView(R.id.click_btn)
-    Button clickBtn;
+    @BindView(R.id.hello_tv) TextView helloTv;
+    @BindView(R.id.click_btn) Button clickBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
