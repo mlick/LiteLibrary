@@ -1,4 +1,4 @@
-package com.mlick.lite.utils;
+package com.lite.library.utils;
 
 import android.Manifest;
 import android.app.Activity;

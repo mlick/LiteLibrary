@@ -1,4 +1,4 @@
-package com.mlick.lite;
+package com.mlick.example;
 
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;

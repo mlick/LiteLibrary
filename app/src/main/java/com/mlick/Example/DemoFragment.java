@@ -1,17 +1,18 @@
-package com.mlick.lite;
+package com.mlick.example;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.mlick.lite.base.BaseDaoFragment;
+import com.lite.library.utils.StrUtils;
+import com.mlick.base.BaseFragment;
 
 import butterknife.BindView;
 
 /**
  * Created by lxx on 2016/5/18 10:52
  */
-public class DemoFragment extends BaseDaoFragment {
+public class DemoFragment extends BaseFragment {
     @BindView(R.id.hello_tv) TextView helloTv;
     @BindView(R.id.click_btn) Button clickBtn;
 
@@ -22,8 +23,8 @@ public class DemoFragment extends BaseDaoFragment {
 
     @Override
     public void initViewData() {
-        helloTv.setText("sayHello");
-        clickBtn.setText("show Hello");
+        StrUtils.setStr(helloTv, "sayHello");
+        StrUtils.setStr(clickBtn, "show Hello");
     }
 
     @Override

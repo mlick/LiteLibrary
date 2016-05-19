@@ -1,14 +1,21 @@
-package com.mlick.lite;
+package com.mlick.example;
 
 import android.view.View;
 
-import com.mlick.lite.base.BaseDaoActivity;
+import com.lite.library.base.BaseDaoActivity;
+
+import butterknife.ButterKnife;
+
 
 /**
  * Created by lxx on 2016/5/18 10:51
  */
 public class DemoFragmentActivity extends BaseDaoActivity {
 
+    @Override
+    protected void viewInject() {
+        ButterKnife.bind(this);
+    }
 
     @Override
     public int getLayoutId() {

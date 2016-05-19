@@ -1,4 +1,6 @@
-package com.mlick.lite.utils;
+package com.lite.library.utils;
+
+import android.widget.TextView;
 
 /**
  * Created by lxx on 2016/3/28 10:33.
@@ -6,6 +8,18 @@ package com.mlick.lite.utils;
  */
 public class StrUtils {
 
+    /**
+     * 设置TextView的setText
+     */
+    public static void setStr(TextView tv, String string) {
+        if (tv != null && !StrUtils.isEmpty(string)) {
+            tv.setText(string);
+        }
+    }
+
+    public static void setStr(TextView tv, int string) {
+        tv.setText(string + "");
+    }
 
     /**
      * 判断String是否为空

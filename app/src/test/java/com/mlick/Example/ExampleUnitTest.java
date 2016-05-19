@@ -1,4 +1,4 @@
-package com.mlick.lite;
+package com.mlick.example;
 
 import org.junit.Test;
 

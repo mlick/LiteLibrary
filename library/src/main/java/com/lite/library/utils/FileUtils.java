@@ -1,4 +1,4 @@
-package com.mlick.lite.utils;
+package com.lite.library.utils;
 
 import android.content.Context;
 import android.os.Environment;

@@ -1,4 +1,4 @@
-package com.mlick.lite.base;
+package com.lite.library.base;
 
 
 import android.os.Bundle;
@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 /**
  * Created by lxx on 2016/5/3 16:25
  */
@@ -20,7 +17,6 @@ public abstract class BaseDaoFragment extends Fragment implements View.OnClickLi
     protected Toast toast;
     protected View baseView = null;
     protected LayoutInflater baseInflater;
-    private Unbinder unbinder;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,7 +30,7 @@ public abstract class BaseDaoFragment extends Fragment implements View.OnClickLi
             baseView = inflater.inflate(getLayoutId(), container, false);
         }
         this.baseInflater = inflater;
-        unbinder = ButterKnife.bind(this, baseView);
+        viewInject();
         return baseView;
     }
 
@@ -44,9 +40,11 @@ public abstract class BaseDaoFragment extends Fragment implements View.OnClickLi
         initViewData();
     }
 
-    public abstract int getLayoutId();
-
     public abstract void initViewData();
+
+    public abstract void viewInject();
+
+    public abstract int getLayoutId();
 
     protected void showToast(String s) {
         if (getActivity() == null) {
@@ -59,9 +57,4 @@ public abstract class BaseDaoFragment extends Fragment implements View.OnClickLi
         toast.show();
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

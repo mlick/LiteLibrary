@@ -1,20 +1,12 @@
-package com.mlick.lite.base;
+package com.lite.library.base;
 
-import android.annotation.TargetApi;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
-
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
-import butterknife.ButterKnife;
 
 
 /**
@@ -26,36 +18,16 @@ public abstract class BaseDaoActivity extends FragmentActivity implements View.O
     private Toast toast;
     protected Context baseCtx;//基类中通用的context
 
-    //    private Unbinder unbinder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        ButterKnife.bind(this);
+        viewInject();
         baseCtx = this;
         initViewData();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//添加window的标题为统一颜色,
-            setTranslucentStatus(true);
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            tintManager.setStatusBarTintEnabled(true);
-            tintManager.setStatusBarTintResource(android.R.color.transparent);//通知栏所需颜色
-        }
     }
 
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
-    }
-//    protected abstract void ViewUtilsInject();
+    protected abstract void viewInject();//框架注入,根据不同框架进行相应的注入比如XUtils,butterKnife等
 
     public abstract int getLayoutId();
 
