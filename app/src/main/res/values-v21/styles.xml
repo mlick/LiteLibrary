@@ -16,8 +16,14 @@
 
     </style>
 
-    <style name="SelectableItemBackground">
-        <item name="android:background">?attr/selectableItemBackground</item>
+    <style name="SelectableItemTheme">
+        <!--<item name="android:backgroundTint">@android:color/white</item>-->
+        <!--<item name="android:background">@android:color/transparent</item>-->
+        <item name="android:colorControlHighlight">@android:color/background_dark</item>
     </style>
 
+    <style name="SelectableItemBackground">
+        <item name="android:theme">@style/SelectableItemTheme</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 </resources>

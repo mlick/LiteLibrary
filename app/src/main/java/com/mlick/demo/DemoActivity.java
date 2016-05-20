@@ -18,6 +18,7 @@ import butterknife.OnClick;
 public class DemoActivity extends BaseActivity {
     @BindView(R.id.hello_tv) TextView helloTv;
     @BindView(R.id.click_btn) Button clickBtn;
+    @BindView(R.id.selectBtn_tv) TextView selectBtn_tv;
 
 
     @Override
@@ -29,7 +30,11 @@ public class DemoActivity extends BaseActivity {
     public void initViewData() {
         StrUtils.setStr(helloTv, "sayHello");
         StrUtils.setStr(clickBtn, "show Hello");
+
+//        RippleDrawable.createRipple(selectBtn_tv, ContextCompat.getColor(this, android.R.color.white));
+//        RippleDrawable.c(getResources(),R.drawable.riple);
     }
+
 
 
     @OnClick({R.id.hello_tv, R.id.click_btn})
