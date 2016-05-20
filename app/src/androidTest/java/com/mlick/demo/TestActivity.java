@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.util.Log;
 
+import com.mlick.demo.MainActivity;
+
 /**
  * Created by lxx on 2016/5/12 13:37
  */

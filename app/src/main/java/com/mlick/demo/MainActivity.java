@@ -1,4 +1,4 @@
-package com.mlick.example;
+package com.mlick.demo;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.mlick.example.R;
 
 public class MainActivity extends ListActivity {
 

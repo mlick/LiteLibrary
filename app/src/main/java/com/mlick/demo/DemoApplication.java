@@ -1,4 +1,4 @@
-package com.mlick.example;
+package com.mlick.demo;
 
 import android.app.Application;
 

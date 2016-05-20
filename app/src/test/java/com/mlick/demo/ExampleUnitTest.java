@@ -1,5 +1,7 @@
 package com.mlick.example;
 
+import com.mlick.demo.MainActivity;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

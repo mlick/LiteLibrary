@@ -1,8 +1,9 @@
-package com.mlick.example;
+package com.mlick.demo;
 
 import android.view.View;
 
 import com.lite.library.base.BaseDaoActivity;
+import com.mlick.example.R;
 
 import butterknife.ButterKnife;
 
