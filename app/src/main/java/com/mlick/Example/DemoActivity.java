@@ -31,10 +31,12 @@ public class DemoActivity extends BaseActivity {
         StrUtils.setStr(clickBtn, "show Hello");
     }
 
+
     @OnClick({R.id.hello_tv, R.id.click_btn})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.hello_tv:
+                Toast.makeText(this, "sayHello", Toast.LENGTH_SHORT).show();
                 Toast.makeText(this, "sayHello", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.click_btn:
