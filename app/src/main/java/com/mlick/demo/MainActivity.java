@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.mlick.example.R;
 
 public class MainActivity extends ListActivity {
 

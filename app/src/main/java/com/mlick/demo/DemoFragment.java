@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.lite.library.utils.StrUtils;
 import com.mlick.base.BaseFragment;
-import com.mlick.example.R;
 
 import butterknife.BindView;
 
