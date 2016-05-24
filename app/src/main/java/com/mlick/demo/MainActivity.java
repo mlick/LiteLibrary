@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.mlick.demo.butterknife.DemoActivity;
+import com.mlick.demo.butterknife.DemoFragmentActivity;
+
 
 public class MainActivity extends ListActivity {
 

@@ -1,4 +1,4 @@
-package com.mlick.demo;
+package com.mlick.demo.butterknife;
 
 import android.view.View;
 import android.widget.Button;
@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.lite.library.utils.StrUtils;
 import com.mlick.base.BaseFragment;
+import com.mlick.demo.R;
 
 import butterknife.BindView;
 
