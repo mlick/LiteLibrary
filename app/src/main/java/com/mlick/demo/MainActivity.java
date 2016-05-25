@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.lite.library.utils.MyProgressDig;
 import com.mlick.demo.butterknife.DemoActivity;
 import com.mlick.demo.butterknife.DemoFragmentActivity;
 
@@ -15,12 +16,15 @@ public class MainActivity extends ListActivity {
 
     private String[] items = {"DemoActivity", "DemoFragmentActivity"};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         setListAdapter(adapter);
+        MyProgressDig.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
+//        MyProgressDig.getCustomProgressDialog(this, "加载中").show();
     }
 
     @Override
