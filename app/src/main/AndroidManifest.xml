@@ -11,8 +11,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme2">
-        <activity android:name="com.mlick.demo.MainActivity">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.mlick.demo.MainActivity"
+            android:theme="@style/AppTheme2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -21,6 +23,8 @@
         </activity>
         <activity android:name=".butterknife.DemoActivity"/>
         <activity android:name=".butterknife.DemoFragmentActivity"/>
+        <activity android:name=".rxandroid.SimpleMainActivity"/>
+        <activity android:name=".rxandroid.OriginMainActivity"/>
     </application>
 
 </manifest>

@@ -1,15 +1,23 @@
-package com.mlick.example;
-
-import com.mlick.demo.MainActivity;
+package com.mlick.demo;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
-public class ExampleUnitTest {
+public class ExampleUnitTest implements Serializable {
     @Test
     public void addition_isCorrect() throws Exception {
         assertEquals(4, 2 + 2);
@@ -18,6 +26,102 @@ public class ExampleUnitTest {
 
     @Test
     public void showMainMethod() {
-        System.out.print(MainActivity.getString());
+        System.out.print(MainActivity.class.getName());
     }
+
+    @Test
+    public void testMapValue() {
+        Map<Integer, ArrayList<TestBean>> map = new HashMap<>();
+        ArrayList<TestBean> arrayList = new ArrayList();
+        arrayList.add(new TestBean("s1", false));
+        arrayList.add(new TestBean("s2", false));
+        arrayList.add(new TestBean("s3", false));
+
+        ArrayList<TestBean> arrayList2 = new ArrayList();
+        arrayList2.add(new TestBean("s1", false));
+        arrayList2.add(new TestBean("s2", false));
+        arrayList2.add(new TestBean("s3", false));
+
+        //浅拷贝
+//        ArrayList<TestBean> arrayList3 = new ArrayList<>(Arrays.asList(new TestBean[arrayList.size()]));
+//        Collections.copy(arrayList3, arrayList);
+        ArrayList<TestBean> arrayList3 = null;
+        try {
+            arrayList3 = (ArrayList<TestBean>) deepCopy(arrayList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        map.put(1, arrayList);
+        map.put(2, arrayList2);
+        map.put(3, arrayList3);
+
+
+        TestBean testBean = map.get(1).get(0);
+        if (testBean.isClick) {
+            testBean.isClick = false;
+        } else {
+            testBean.isClick = true;
+        }
+
+        System.out.print(map.get(1).get(0).isClick);
+        System.out.print(map.get(2).get(0).isClick);
+        System.out.print(map.get(3).get(0).isClick);
+    }
+
+    public class TestBean implements Serializable {
+        public String name;
+        public boolean isClick;
+
+        public TestBean(String s1, boolean b) {
+            this.name = s1;
+            this.isClick = b;
+        }
+    }
+
+    @Test
+    public void testStringButter() {
+        StringBuffer buffer = new StringBuffer("123456789");
+        buffer.deleteCharAt(buffer.length() - 1);
+        System.out.print(buffer.toString());
+    }
+
+    @Test
+    public void testArrayList() {
+        ArrayList<SetPlusGvBean> plusGvList = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            SetPlusGvBean b1 = new SetPlusGvBean(i, -1);
+            SetPlusGvBean b2 = new SetPlusGvBean(i);
+            SetPlusGvBean b3 = new SetPlusGvBean(i);
+            SetPlusGvBean b4 = new SetPlusGvBean(i);
+        }
+    }
+
+    public class SetPlusGvBean {
+        public int weekItem;//代表周期几
+        public int flag = 0;// -1 表示星期  || 0 表示未选中
+        public String name;// 表示名字
+
+        public SetPlusGvBean(int i) {
+            weekItem = i;
+        }
+
+        public SetPlusGvBean(int flag, int i) {
+            weekItem = i;
+            this.flag = flag;
+        }
+    }
+
+    public ArrayList deepCopy(ArrayList src) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream(byteOut);
+        out.writeObject(src);
+        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());
+        ObjectInputStream in = new ObjectInputStream(byteIn);
+        return (ArrayList) in.readObject();
+    }
+
+
 }

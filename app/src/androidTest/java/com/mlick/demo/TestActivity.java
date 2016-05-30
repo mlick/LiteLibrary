@@ -1,10 +1,8 @@
-package com.mlick.example;
+package com.mlick.demo;
 
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
 import android.util.Log;
-
-import com.mlick.demo.MainActivity;
 
 /**
  * Created by lxx on 2016/5/12 13:37
@@ -26,11 +24,14 @@ public class TestActivity extends ActivityUnitTestCase<MainActivity> {
         getStartedActivityIntent();
         startActivity(new Intent(getInstrumentation().getContext(), MainActivity.class), null, null);
     }
+
     public void setUp() throws Exception {
         super.setUp();
         Intent intent = new Intent(getInstrumentation().getContext(), MainActivity.class);
         startActivity(intent, null, null);
     }
+
+
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {

@@ -7,14 +7,15 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.lite.library.utils.MyProgressDig;
 import com.mlick.demo.butterknife.DemoActivity;
 import com.mlick.demo.butterknife.DemoFragmentActivity;
+import com.mlick.demo.rxandroid.OriginMainActivity;
+import com.mlick.demo.rxandroid.SimpleMainActivity;
 
 
 public class MainActivity extends ListActivity {
 
-    private String[] items = {"DemoActivity", "DemoFragmentActivity"};
+    private String[] items = {"DemoActivity", "DemoFragmentActivity", "SimpleMainActivity", "OriginMainActivity"};
 
 
     @Override
@@ -23,7 +24,7 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         setListAdapter(adapter);
-        MyProgressDig.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
+//        MyProgressDig.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
 //        MyProgressDig.getCustomProgressDialog(this, "加载中").show();
     }
 
@@ -36,6 +37,12 @@ public class MainActivity extends ListActivity {
                 break;
             case 1:
                 intent = new Intent(this, DemoFragmentActivity.class);
+                break;
+            case 2:
+                intent = new Intent(this, SimpleMainActivity.class);
+                break;
+            case 3:
+                intent = new Intent(this, OriginMainActivity.class);
                 break;
         }
         if (intent != null) {
