@@ -24,8 +24,8 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         setListAdapter(adapter);
-//        MyProgressDig.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
-//        MyProgressDig.getCustomProgressDialog(this, "加载中").show();
+//        DigUtils.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
+//        DigUtils.getCustomProgressDialog(this, "加载中").show();
     }
 
     @Override

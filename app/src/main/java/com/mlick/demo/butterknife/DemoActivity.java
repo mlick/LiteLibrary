@@ -29,8 +29,8 @@ public class DemoActivity extends BaseActivity {
 
     @Override
     public void initViewData() {
-        StrUtils.setStr(helloTv, "sayHello");
-        StrUtils.setStr(clickBtn, "show Hello");
+        StrUtils.setTvStr(helloTv, "sayHello");
+        StrUtils.setTvStr(clickBtn, "show Hello");
 
 //        RippleDrawable.createRipple(selectBtn_tv, ContextCompat.getColor(this, android.R.color.white));
 //        RippleDrawable.c(getResources(),R.drawable.riple);

@@ -32,6 +32,9 @@ public class TestActivity extends ActivityUnitTestCase<MainActivity> {
     }
 
 
+    public void testAct() {
+
+    }
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {

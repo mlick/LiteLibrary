@@ -11,7 +11,7 @@ import android.content.Context;
  * @date 2014-9-4
  * @time 下午5:13:30
  */
-public class MyProgressDig {
+public class DigUtils {
 
 
     private static ProgressDialog loadingDialog;

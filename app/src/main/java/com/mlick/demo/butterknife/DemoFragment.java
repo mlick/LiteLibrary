@@ -24,8 +24,8 @@ public class DemoFragment extends BaseFragment {
 
     @Override
     public void initViewData() {
-        StrUtils.setStr(helloTv, "sayHello");
-        StrUtils.setStr(clickBtn, "show Hello");
+        StrUtils.setTvStr(helloTv, "sayHello");
+        StrUtils.setTvStr(clickBtn, "show Hello");
     }
 
     @Override

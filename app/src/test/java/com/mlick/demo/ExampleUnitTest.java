@@ -123,5 +123,11 @@ public class ExampleUnitTest implements Serializable {
         return (ArrayList) in.readObject();
     }
 
+    @Test
+    public void testStringRelace() {
+        String res = "事实上,ddd,嘿嘿";
+        res = res.replaceAll("嘿嘿", "哈哈");
+        System.out.print(res);
+    }
 
 }

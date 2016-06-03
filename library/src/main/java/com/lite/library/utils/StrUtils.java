@@ -1,5 +1,8 @@
 package com.lite.library.utils;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 /**
@@ -9,17 +12,30 @@ import android.widget.TextView;
 public class StrUtils {
 
     /**
-     * 设置TextView的setText
+     * ============ 设置TextView的 各种属性 =========================
      */
-    public static void setStr(TextView tv, String string) {
+    public static void setTvStr(TextView tv, String string) {
         if (tv != null && !StrUtils.isEmpty(string)) {
             tv.setText(string);
         }
     }
 
-    public static void setStr(TextView tv, int string) {
+    public static void setTvStr(TextView tv, int string) {
         tv.setText(string + "");
     }
+
+    public static void setTvColor(Context cxt, TextView tv, int cororId) {
+        if (cxt != null && tv != null && cororId != 0) {
+            tv.setTextColor(ContextCompat.getColor(cxt, cororId));
+        }
+    }
+
+    public static void setTvSize(Context cxt, TextView tv, int dimension) {
+        if (cxt != null && tv != null && dimension != 0) {
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, cxt.getResources().getDimension(dimension));
+        }
+    }
+    /**============ 设置TextView的 各种属性 end =========================**/
 
     /**
      * 判断String是否为空
