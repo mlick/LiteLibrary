@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="BMI: 34.1"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text="标准"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="体脂肪率:  8%"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text="标准"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="人体水分:  57%"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text="标准"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="内脏脂肪:  9"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text="标准"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="肌肉率:  40%"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text="标准"
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="骨骼 (kg):  3.0"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text=""
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableLeft="@android:drawable/ic_media_play"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="基础代谢率 (kcal): 1134"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@android:drawable/ic_media_play"
+                android:gravity="center"
+                android:text=""
+                android:textSize="15dp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="#F0F0F0"/>
+
+    </LinearLayout>
+</ScrollView>

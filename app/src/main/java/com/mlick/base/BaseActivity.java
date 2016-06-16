@@ -22,6 +22,15 @@ public abstract class BaseActivity extends BaseDaoActivity {
         setWindowTitle();
     }
 
+    protected void setWindowTitle(int color) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//添加window的标题为统一颜色,
+            setTranslucentStatus(true);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintColor(color);//通知栏所需颜色
+        }
+    }
+
     private void setWindowTitle() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//添加window的标题为统一颜色,
             setTranslucentStatus(true);

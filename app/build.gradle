@@ -24,6 +24,9 @@ android {
         }
     }
 }
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -39,5 +42,5 @@ dependencies {
 // Because RxAndroid releases are few and far between, it is recommended you also
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.5'
-
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
 }

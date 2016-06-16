@@ -13,7 +13,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-       <!-- <item name="android:fitsSystemWindows">true</item>  此种方式有问题，不可直接全局使用，会产生一系列的问题-->
+        <!-- <item name="android:fitsSystemWindows">true</item>  此种方式有问题，不可直接全局使用，会产生一系列的问题-->
     </style>
 
     <style name="ProgressDialogTheme" parent="Theme.AppCompat.Light.Dialog">
