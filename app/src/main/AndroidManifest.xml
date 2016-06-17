@@ -6,6 +6,8 @@
     // 允许应用写（非读）用户的外部存储器
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,14 +24,17 @@
         <activity android:name=".rxandroid.SimpleMainActivity"/>
         <activity android:name=".rxandroid.OriginMainActivity"/>
         <activity android:name=".other.jiankangduoduo.PlayBodyFatScalesActivity">
+        </activity>
+        <activity android:name=".other.jiankangduoduo.PersonFatDetailActivity">
+        </activity>
+        <activity android:name=".retrofit.RetrofitSimpleActivity">
+        </activity>
+        <activity android:name=".other.animation.AnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name=".other.jiankangduoduo.PersonFatDetailActivity">
-
         </activity>
     </application>
 

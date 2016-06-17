@@ -43,4 +43,13 @@ dependencies {
 // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
+
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
+    compile 'com.squareup.retrofit2:converter-scalars:2.0.1'
+    compile 'org.ligboy.retrofit2:converter-fastjson-android:2.0.2'
+
+    compile 'com.nineoldandroids:library:2.4.0'
+//    compile 'org.testng:testng:6.9.6'
 }
