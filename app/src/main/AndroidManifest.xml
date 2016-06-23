@@ -24,12 +24,16 @@
         <activity android:name=".rxandroid.SimpleMainActivity"/>
         <activity android:name=".rxandroid.OriginMainActivity"/>
         <activity android:name=".other.jiankangduoduo.PlayBodyFatScalesActivity">
+
         </activity>
         <activity android:name=".other.jiankangduoduo.PersonFatDetailActivity">
         </activity>
         <activity android:name=".retrofit.RetrofitSimpleActivity">
         </activity>
         <activity android:name=".other.animation.AnimationActivity">
+
+        </activity>
+        <activity android:name=".other.animation.ProgressAnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
