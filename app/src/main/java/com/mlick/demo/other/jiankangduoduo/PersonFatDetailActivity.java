@@ -24,12 +24,13 @@ import rx.functions.Func1;
 
 /**
  * Created by lxx on 2016/6/15 9:42
+ * 体脂秤的个人数据页面
  */
 public class PersonFatDetailActivity extends BaseActivity implements SlidingTabStrip.SlidingTabStripListener {
     @BindView(R.id.person_fat_tab_strip) SlidingTabStrip slidingTabStrip;
     @BindView(R.id.chart) LineChart lineChart;
     private String[] strings = {"爸爸", "妈妈", "爷爷", "奶奶", "自己"};
-    private ArrayList<PersonTabBean> list;
+    private ArrayList<PersonTabBean> list;// = Arrays.asList(new PersonTabBean("爸爸"));
 
     @Override
     public int getLayoutId() {
@@ -55,7 +56,8 @@ public class PersonFatDetailActivity extends BaseActivity implements SlidingTabS
         slidingTabStrip.setListener(this);
 
         ArrayList<ILineDataSet> sets = new ArrayList<ILineDataSet>();
-        LineDataSet ds1 = new LineDataSet(FileUtils.loadEntriesFromAssets(getAssets(), "square.txt"), "");
+        LineDataSet ds1 = new LineDataSet(FileUtils
+                .loadEntriesFromAssets(getAssets(), "square.txt"), "");
         ds1.setColor(ColorTemplate.VORDIPLOM_COLORS[0]);
         ds1.setCircleColor(ColorTemplate.VORDIPLOM_COLORS[0]);
         ds1.setLineWidth(2.5f);
