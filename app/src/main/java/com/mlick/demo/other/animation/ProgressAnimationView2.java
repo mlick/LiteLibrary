@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +21,7 @@ public class ProgressAnimationView2 extends View {
     private float sweepAngle = 0.0f;
     ValueAnimator animator;
 
-    private boolean isRunning = false;
+//    private boolean isRunning = false;
 
     public ProgressAnimationView2(Context context) {
         this(context, null);
@@ -40,6 +39,7 @@ public class ProgressAnimationView2 extends View {
         mProgressPaintSel.setStrokeWidth(20.0f);
         mProgressPaintSel.setAntiAlias(true);
         mProgressPaintSel.setStyle(Paint.Style.STROKE);
+        mProgressPaintSel.setStrokeCap(Paint.Cap.ROUND);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ProgressAnimationView2 extends View {
 
 
     public void clickAnimation() {
-        if (!isRunning) {
+        if (!isAnimation()) {
             playAnimation();
         } else {
             stopAnimation();
@@ -65,36 +65,41 @@ public class ProgressAnimationView2 extends View {
     }
 
     public void playAnimation() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                stopAnimation();
-                sweepAngle = 360;
-                invalidate();
-                isRunning = false;
-            }
-        }, 3000);
-        animator = ValueAnimator.ofFloat(0f, 1f);
-        animator.setDuration(3000);
-        animator.setRepeatCount(Integer.MAX_VALUE);
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                stopAnimation();
+//                sweepAngle = 360;
+//                invalidate();
+//                isRunning = false;
+//            }
+//        }, 3000);
+        animator = ValueAnimator.ofInt(0, 360);
+        animator.setDuration(7000);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                float vlaue = (float) animation.getAnimatedValue();
+                int vlaue = (int) animation.getAnimatedValue();
                 Log.d("animator progress ++> ", sweepAngle + " || " + vlaue);
-                sweepAngle = 360 * vlaue;
+                sweepAngle = vlaue;
                 invalidate();
             }
         });
-        isRunning = true;
+        animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.start();
     }
 
     public void stopAnimation() {
         if (animator != null) {
             animator.cancel();
-            isRunning = false;
         }
     }
 
+
+    public boolean isAnimation() {
+        if (animator != null) {
+            return animator.isStarted();
+        }
+        return false;
+    }
 }

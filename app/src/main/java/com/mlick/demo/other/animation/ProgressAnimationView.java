@@ -36,6 +36,7 @@ public class ProgressAnimationView extends View {
         mProgressPaintSel.setStrokeWidth(20.0f);
         mProgressPaintSel.setAntiAlias(true);
         mProgressPaintSel.setStyle(Paint.Style.STROKE);
+        mProgressPaintSel.setStrokeCap(Paint.Cap.ROUND);
     }
 
     @Override
