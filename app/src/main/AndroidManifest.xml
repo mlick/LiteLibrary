@@ -29,16 +29,17 @@
         <activity android:name=".other.jiankangduoduo.PersonFatDetailActivity">
         </activity>
         <activity android:name=".retrofit.RetrofitSimpleActivity">
-        </activity>
-        <activity android:name=".other.animation.AnimationActivity">
-
-        </activity>
-        <activity android:name=".other.animation.ProgressAnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".other.animation.AnimationActivity">
+
+        </activity>
+        <activity android:name=".other.animation.ProgressAnimationActivity">
+
         </activity>
     </application>
 

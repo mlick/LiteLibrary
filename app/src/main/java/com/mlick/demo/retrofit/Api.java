@@ -18,7 +18,7 @@ import rx.Observable;
  * Created by lxx on 2016/6/16 14:13
  */
 public interface Api {
-    public static final String baseUrl = "http://ceshi.wenbing.cn/v1/";
+    String baseUrl = "http://ceshi.wenbing.cn/v1/";
 
     @FormUrlEncoded
     @POST("v1zixuninfo/getarticlelist")
