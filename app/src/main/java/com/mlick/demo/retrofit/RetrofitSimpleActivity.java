@@ -2,7 +2,9 @@ package com.mlick.demo.retrofit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mlick.demo.R;
 
@@ -32,7 +34,6 @@ import rx.schedulers.Schedulers;
  */
 public class RetrofitSimpleActivity extends AppCompatActivity {
 
-
     private static OkHttpClient okHttpClient;
     @BindView(R.id.userName) EditText userName;
     @BindView(R.id.userPassWord) EditText userPassWord;
@@ -59,7 +60,8 @@ public class RetrofitSimpleActivity extends AppCompatActivity {
         apiMovie = retrofit.create(ApiMovie.class);
         apiMovieStr = initClient(ApiMovie.url, ScalarsConverterFactory
                 .create(), RxJavaCallAdapterFactory.create()).create(ApiMovie.class);
-        testMovie();
+//        testMovie();
+//        testRegister();
     }
 
     private void testMovie() {
@@ -82,6 +84,7 @@ public class RetrofitSimpleActivity extends AppCompatActivity {
         });
 
     }
+
 
     private Retrofit initClient(String url, Converter.Factory converter, CallAdapter.Factory callAdapter) {
         okHttpClient = new OkHttpClient.Builder().connectTimeout(15, TimeUnit.SECONDS)
@@ -177,14 +180,7 @@ public class RetrofitSimpleActivity extends AppCompatActivity {
            });
     }
 
-    @OnClick(R.id.confirm)
-    public void onClick() {
-        testLogin(userName.getText().toString(), userPassWord.getText().toString());
-    }
-
-
     private void testLogin(String userName, String passWord) {
-
         apiMovie.login(userName, passWord).observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io()).subscribe(new Subscriber<ResultBean>() {
             @Override
@@ -199,42 +195,72 @@ public class RetrofitSimpleActivity extends AppCompatActivity {
             @Override
             public void onNext(ResultBean resultBean) {
                 System.out.println(">>> resultBean" + resultBean.toString());
+                Toast.makeText(RetrofitSimpleActivity.this, resultBean
+                        .toString(), Toast.LENGTH_SHORT).show();
             }
         });
+//        apiMovieStr.loginStr(userName, passWord).observeOn(AndroidSchedulers.mainThread())
+//                   .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                System.out.println(">>> onError");
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                System.out.println(">>> onNext" + s);
+//            }
+//        });
+//        apiMovieStr.getUserInfo().observeOn(AndroidSchedulers.mainThread())
+//                   .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
+//            @Override
+//            public void onCompleted() {
+//
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                System.out.println(">>> onError");
+//            }
+//
+//            @Override
+//            public void onNext(String s) {
+//                System.out.println(">>> onNext" + s);
+//            }
+//        });
+    }
 
-        apiMovieStr.loginStr(userName, passWord).observeOn(AndroidSchedulers.mainThread())
-                   .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
+    private void testRegister(String userName, String passWord) {
+        apiMovie.register(userName, passWord).enqueue(new Callback<ResultBean>() {
             @Override
-            public void onCompleted() {
-
+            public void onResponse(Call<ResultBean> call, Response<ResultBean> response) {
+                System.out.println(">>> onResponse" + call.toString());
+                Toast.makeText(RetrofitSimpleActivity.this, response.body()
+                                                                    .getMessage(), Toast.LENGTH_SHORT)
+                     .show();
             }
 
             @Override
-            public void onError(Throwable e) {
-                System.out.println(">>> onError");
-            }
-
-            @Override
-            public void onNext(String s) {
-                System.out.println(">>> onNext" + s);
+            public void onFailure(Call<ResultBean> call, Throwable t) {
+                System.out.println(">>> onFailure" + t.toString());
             }
         });
-        apiMovieStr.getUserInfo().observeOn(AndroidSchedulers.mainThread())
-                   .subscribeOn(Schedulers.io()).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
+    }
 
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                System.out.println(">>> onError");
-            }
-
-            @Override
-            public void onNext(String s) {
-                System.out.println(">>> onNext" + s);
-            }
-        });
+    @OnClick({R.id.confirm, R.id.register})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.confirm:
+                testLogin(userName.getText().toString(), userPassWord.getText().toString());
+                break;
+            case R.id.register:
+                testRegister(userName.getText().toString(), userPassWord.getText().toString());
+                break;
+        }
     }
 }

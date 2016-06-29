@@ -1,5 +1,7 @@
 package com.mlick.demo.retrofit;
 
+import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -24,7 +26,14 @@ public interface ApiMovie {
     @POST("/phone/user/login")
     Observable<String> loginStr(@Field("name") String userName, @Field("pwd") String passWord);
 
-
     @GET("/phone/user/info")
     Observable<String> getUserInfo();
+
+    @FormUrlEncoded
+    @POST("/phone/user/register")
+    Call<UserLoginInfo> registerBody(@Body UserLoginInfo user);
+
+    @FormUrlEncoded
+    @POST("/phone/user/register")
+    Call<ResultBean> register(@Field("name") String userName, @Field("pwd") String passWordr);
 }
