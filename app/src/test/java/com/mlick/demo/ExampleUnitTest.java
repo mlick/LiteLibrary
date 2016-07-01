@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -130,4 +134,65 @@ public class ExampleUnitTest implements Serializable {
         System.out.print(res);
     }
 
+
+    @Test
+    public void testNetWork() {
+        long begin1;
+        begin1 = System.currentTimeMillis();
+        System.out.println(getNetWorkIP());
+        System.out.println((System.currentTimeMillis() - begin1));
+
+    }
+
+    @Test
+    public void testNetWork2() {
+        long begin2;
+        begin2 = System.currentTimeMillis();
+        System.out.println(getNetWorkIP2());
+        System.out.println((System.currentTimeMillis() - begin2));
+
+    }
+
+
+    public static String getNetWorkIP() {
+        StringBuilder sb = new StringBuilder();
+        try {
+            Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
+            while (en.hasMoreElements()) {
+                NetworkInterface intf = en.nextElement();
+                Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses();
+                while (enumIpAddr.hasMoreElements()) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress() && !inetAddress
+                            .isLinkLocalAddress() && inetAddress.isSiteLocalAddress()) {
+                        sb.append(inetAddress.getHostAddress());
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            return "";
+        }
+        return sb.toString();
+    }
+
+    public static String getNetWorkIP2() {
+        StringBuffer sb = new StringBuffer();
+        try {
+            Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
+            while (en.hasMoreElements()) {
+                NetworkInterface intf = en.nextElement();
+                Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses();
+                while (enumIpAddr.hasMoreElements()) {
+                    InetAddress inetAddress = enumIpAddr.nextElement();
+                    if (!inetAddress.isLoopbackAddress() && !inetAddress
+                            .isLinkLocalAddress() && inetAddress.isSiteLocalAddress()) {
+                        sb.append(inetAddress.getHostAddress());
+                    }
+                }
+            }
+        } catch (SocketException e) {
+            return "";
+        }
+        return sb.toString();
+    }
 }

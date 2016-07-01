@@ -13,27 +13,27 @@ import rx.Observable;
  */
 public interface ApiMovie {
 
-    String url = "http://192.168.1.48:3000";
+    String url = "http://192.168.4.102:3000/";
 
-    @GET("/phone")
+    @GET("phone")
     Observable<MovieBean> getHomeList();
 
     @FormUrlEncoded
-    @POST("/phone/user/login")
+    @POST("phone/user/login")
     Observable<ResultBean> login(@Field("name") String userName, @Field("pwd") String passWord);
 
     @FormUrlEncoded
-    @POST("/phone/user/login")
+    @POST("phone/user/login")
     Observable<String> loginStr(@Field("name") String userName, @Field("pwd") String passWord);
 
-    @GET("/phone/user/info")
+    @GET("phone/user/info")
     Observable<String> getUserInfo();
 
     @FormUrlEncoded
-    @POST("/phone/user/register")
+    @POST("phone/user/register")
     Call<UserLoginInfo> registerBody(@Body UserLoginInfo user);
 
     @FormUrlEncoded
-    @POST("/phone/user/register")
+    @POST("phone/user/register")
     Call<ResultBean> register(@Field("name") String userName, @Field("pwd") String passWordr);
 }
