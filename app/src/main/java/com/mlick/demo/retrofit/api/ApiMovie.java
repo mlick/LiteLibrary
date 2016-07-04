@@ -1,4 +1,4 @@
-package com.mlick.demo.retrofit.apiB;
+package com.mlick.demo.retrofit.api;
 
 import com.mlick.demo.retrofit.bean.MovieBean;
 import com.mlick.demo.retrofit.bean.ResultBean;
