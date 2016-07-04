@@ -1,4 +1,8 @@
-package com.mlick.demo.retrofit;
+package com.mlick.demo.retrofit.api;
+
+import com.mlick.demo.retrofit.bean.MovieBean;
+import com.mlick.demo.retrofit.bean.ResultBean;
+import com.mlick.demo.retrofit.bean.UserLoginInfo;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

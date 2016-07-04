@@ -1,4 +1,4 @@
-package com.mlick.demo.retrofit;
+package com.mlick.demo.retrofit.bean;
 
 import java.util.List;
 

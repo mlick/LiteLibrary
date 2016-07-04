@@ -1,4 +1,6 @@
-package com.mlick.demo.retrofit;
+package com.mlick.demo.retrofit.api;
+
+import com.mlick.demo.retrofit.bean.InfoContainerBean;
 
 import java.util.ArrayList;
 import java.util.HashMap;

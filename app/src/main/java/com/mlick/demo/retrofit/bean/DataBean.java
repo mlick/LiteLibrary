@@ -1,4 +1,4 @@
-package com.mlick.demo.retrofit;
+package com.mlick.demo.retrofit.bean;
 
 /**
  * Created by lxx on 2016/6/28 11:28

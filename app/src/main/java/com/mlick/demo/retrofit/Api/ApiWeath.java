@@ -1,4 +1,4 @@
-package com.mlick.demo.retrofit;
+package com.mlick.demo.retrofit.api;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
