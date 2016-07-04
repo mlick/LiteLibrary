@@ -1,4 +1,4 @@
-package com.mlick.demo.retrofit.api;
+package com.mlick.demo.retrofit.apiB;
 
 import com.mlick.demo.retrofit.bean.InfoContainerBean;
 

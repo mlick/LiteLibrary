@@ -7,9 +7,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mlick.demo.R;
-import com.mlick.demo.retrofit.api.Api;
-import com.mlick.demo.retrofit.api.ApiMovie;
-import com.mlick.demo.retrofit.api.ApiWeath;
+import com.mlick.demo.retrofit.apiB.Api;
+import com.mlick.demo.retrofit.apiB.ApiMovie;
+import com.mlick.demo.retrofit.apiB.ApiWeath;
 import com.mlick.demo.retrofit.bean.InfoContainerBean;
 import com.mlick.demo.retrofit.bean.MovieBean;
 import com.mlick.demo.retrofit.bean.ResultBean;
