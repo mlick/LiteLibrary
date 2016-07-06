@@ -1,4 +1,4 @@
-package com.mlick.demo.other.animation;
+package com.mlick.demo.animation;
 
 import android.animation.ValueAnimator;
 import android.view.View;

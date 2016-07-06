@@ -1,4 +1,4 @@
-package com.mlick.demo.other.animation;
+package com.mlick.demo.animation;
 
 import android.content.Context;
 import android.util.AttributeSet;

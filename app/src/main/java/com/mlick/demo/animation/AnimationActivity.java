@@ -1,4 +1,4 @@
-package com.mlick.demo.other.animation;
+package com.mlick.demo.animation;
 
 import android.util.DisplayMetrics;
 import android.util.Log;

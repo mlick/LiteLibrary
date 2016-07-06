@@ -29,7 +29,7 @@ import java.util.Map;
  */
 public class CrashHandler implements UncaughtExceptionHandler {
     private static final String TAG = "CrashHandler";
-    private static final String DIRNAME = "AppCrash";
+    public static final String DIRNAME = "AppCrash";
     private UncaughtExceptionHandler mDefaultHandler;// 系统默认的UncaughtException处理类
     private static CrashHandler INSTANCE = new CrashHandler();// CrashHandler实例
     private Context mContext;// 程序的Context对象
@@ -92,7 +92,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
             public void run() {
                 Looper.prepare();
                 try {
-                    Toast.makeText(mContext, "出现闪退了正在把日志保存到sdcard crash目录下", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "出现闪退了正在把日志保存到sdcard crash目录下", Toast.LENGTH_SHORT)
+                         .show();
                 } catch (OutOfMemoryError e) {
                     e.printStackTrace();
                 } catch (Exception exception) {
@@ -116,7 +117,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
     public void collectDeviceInfo(Context context) {
         try {
             PackageManager pm = context.getPackageManager();// 获得包管理器
-            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);// 得到该应用的信息，即主Activity
+            PackageInfo pi = pm.getPackageInfo(context
+                    .getPackageName(), PackageManager.GET_ACTIVITIES);// 得到该应用的信息，即主Activity
             if (pi != null) {
                 String versionName = pi.versionName == null ? "null" : pi.versionName;
                 String versionCode = pi.versionCode + "";
@@ -166,7 +168,8 @@ public class CrashHandler implements UncaughtExceptionHandler {
         String fileName = "crash-" + time + "-" + timetamp + ".log";
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
             try {
-                File dir = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + DIRNAME + File.separator);
+                File dir = new File(Environment.getExternalStorageDirectory()
+                                               .getAbsolutePath() + File.separator + DIRNAME + File.separator);
                 Log.i("CrashHandler", dir.toString());
                 boolean isCreadteSuccess = true;
                 if (!dir.exists()) {

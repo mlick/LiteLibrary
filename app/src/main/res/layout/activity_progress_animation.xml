@@ -5,14 +5,14 @@
               android:orientation="vertical"
               android:padding="10dp">
 
-    <com.mlick.demo.other.animation.ProgressAnimationView
+    <com.mlick.demo.animation.ProgressAnimationView
         android:id="@+id/animation"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:background="#4692DE"/>
 
-    <com.mlick.demo.other.animation.ProgressAnimationView2
+    <com.mlick.demo.animation.ProgressAnimationView2
         android:layout_width="300dp"
         android:id="@+id/animation2"
         android:layout_height="160dp"
@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:background="#4692DE"/>
 
-    <com.mlick.demo.other.animation.CircleProgress
+    <com.mlick.demo.animation.CircleProgress
         android:id="@+id/animation3"
         android:layout_width="50dp"
         android:layout_height="wrap_content"

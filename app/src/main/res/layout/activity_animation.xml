@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.mlick.demo.other.animation.AutoMesuseLayout
+        <com.mlick.demo.animation.AutoMesuseLayout
             android:id="@+id/iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

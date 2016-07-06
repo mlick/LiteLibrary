@@ -3,9 +3,11 @@
           package="com.mlick.demo">
 
     <uses-sdk android:minSdkVersion="11"/>
-    // 允许应用写（非读）用户的外部存储器
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 允许应用写入外部存储。 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 允许应用读取外部存储。 -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -17,7 +19,11 @@
         <activity
             android:name="com.mlick.demo.MainActivity"
             android:theme="@style/AppTheme2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".butterknife.DemoActivity"/>
         <activity android:name=".butterknife.DemoFragmentActivity"/>
@@ -29,16 +35,15 @@
         <activity android:name=".other.jiankangduoduo.PersonFatDetailActivity">
         </activity>
         <activity android:name=".retrofit.RetrofitSimpleActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-        <activity android:name=".other.animation.AnimationActivity">
 
         </activity>
-        <activity android:name=".other.animation.ProgressAnimationActivity">
+        <activity android:name=".animation.AnimationActivity">
+
+        </activity>
+        <activity android:name=".animation.ProgressAnimationActivity">
+
+        </activity>
+        <activity android:name=".animation.RoundArcActivity">
 
         </activity>
     </application>
