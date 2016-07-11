@@ -20,7 +20,7 @@ public class RoundArcActivity extends BaseActivity {
 
     @Override
     public void initViewData() {
-        roundArcView.evaluate(20, 30, 60, "", "", "");
+        roundArcView.evaluate(0, 0, 0, "", "", "");
     }
 
     @Override

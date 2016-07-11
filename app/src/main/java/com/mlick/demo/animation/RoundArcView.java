@@ -173,14 +173,18 @@ public class RoundArcView extends View {
             angels[2] = (swipeAngel - 10) * bodyFatScore / 100.0f;
             arcPaint.setAlpha(240);
             for (int i = 0; i < 3; i++) {
-                canvas.drawArc(outerRect, startAngel + 120 * i + 5 + animateAngel, angels[i], false, arcPaint);
+                if (angels[i] > 0) {
+                    canvas.drawArc(outerRect, startAngel + 120 * i + 5 + animateAngel, angels[i], false, arcPaint);
+                }
             }
             textPaint.setTextAlign(Paint.Align.CENTER);
             canvas.drawText("计步" + stepLevel, centerX, centerY - radius - textSize, textPaint);
             textPaint.setTextAlign(Paint.Align.LEFT);
-            canvas.drawText("体检" + checkLevel, centerX + radius, (float) (centerY + radius * Math.tan(Math.PI / 6)), textPaint);
+            canvas.drawText("体检" + checkLevel, centerX + radius, (float) (centerY + radius * Math
+                    .tan(Math.PI / 6)), textPaint);
             textPaint.setTextAlign(Paint.Align.RIGHT);
-            canvas.drawText("体脂" + bodyFatLevel, centerX - radius, (float) (centerY + radius * Math.tan(Math.PI / 6)), textPaint);
+            canvas.drawText("体脂" + bodyFatLevel, centerX - radius, (float) (centerY + radius * Math
+                    .tan(Math.PI / 6)), textPaint);
         }
 
     }
@@ -209,7 +213,8 @@ public class RoundArcView extends View {
         this.checkScore = checkScore(checkScore);
         this.bodyFatScore = checkScore(bodyFatScore);
         AnimatorSet evaluateAnim = new AnimatorSet();
-        evaluateAnim.play(getEvaluateAnimator(stepScore, checkScore, bodyFatScore)).after(getInitAnimation());
+        evaluateAnim.play(getEvaluateAnimator(stepScore, checkScore, bodyFatScore))
+                    .after(getInitAnimation());
         evaluateAnim.start();
 
     }
@@ -258,8 +263,10 @@ public class RoundArcView extends View {
         this.bodyFatScore = 0;
         PropertyValuesHolder pStepScore = PropertyValuesHolder.ofInt("stepScore", 0, stepScore);
         PropertyValuesHolder pCheckScore = PropertyValuesHolder.ofInt("checkScore", 0, checkScore);
-        PropertyValuesHolder pBodyFatScore = PropertyValuesHolder.ofInt("bodyFatScore", 0, bodyFatScore);
-        ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(this, pStepScore, pCheckScore, pBodyFatScore);
+        PropertyValuesHolder pBodyFatScore = PropertyValuesHolder
+                .ofInt("bodyFatScore", 0, bodyFatScore);
+        ObjectAnimator animator = ObjectAnimator
+                .ofPropertyValuesHolder(this, pStepScore, pCheckScore, pBodyFatScore);
         animator.setDuration(1000);
         animator.setStartDelay(100);
         animator.setInterpolator(new AccelerateDecelerateInterpolator());
