@@ -1,6 +1,5 @@
 package com.mlick.demo.animation;
 
-import android.animation.ValueAnimator;
 import android.view.View;
 
 import com.mlick.base.BaseActivity;
@@ -26,19 +25,17 @@ public class ProgressAnimationActivity extends BaseActivity {
     public void initViewData() {
         animationView.playAnimation();
         animationView2.playAnimation();
-
-
-        ValueAnimator animator = ValueAnimator.ofInt(0, 100);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int progress = (int) animation.getAnimatedValue();
-
-            }
-        });
-        animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.setDuration(4000);
-        animator.start();
+//        ValueAnimator animator = ValueAnimator.ofInt(0, 100);
+//        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+//            @Override
+//            public void onAnimationUpdate(ValueAnimator animation) {
+//                int progress = (int) animation.getAnimatedValue();
+//
+//            }
+//        });
+//        animator.setRepeatCount(ValueAnimator.INFINITE);
+//        animator.setDuration(4000);
+//        animator.start();
     }
 
     @OnClick({R.id.animation2, R.id.animation})
@@ -51,5 +48,12 @@ public class ProgressAnimationActivity extends BaseActivity {
                 animationView2.clickAnimation();
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        animationView.stopAnimation();
+        animationView2.stopAnimation();
     }
 }
