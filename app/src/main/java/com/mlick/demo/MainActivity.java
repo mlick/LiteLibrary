@@ -15,7 +15,11 @@ import com.mlick.demo.rxandroid.SimpleMainActivity;
 
 public class MainActivity extends ListActivity {
 
-    private String[] items = {"DemoActivity", "DemoFragmentActivity", "SimpleMainActivity", "OriginMainActivity"};
+    private String[] items = {
+            /*0*/"ButterKnifeDemo",
+            /*1*/"ButterKnifeFragmentDemo",
+            /*2*/"SimpleMainActivity",
+            /*3*/"OriginMainActivity"};
 
 
     @Override
