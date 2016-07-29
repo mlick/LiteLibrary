@@ -20,7 +20,7 @@ public abstract class BaseFragment extends BaseDaoFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        if (unbinder != null) unbinder.unbind();
     }
 
 }

@@ -17,6 +17,8 @@ import com.mlick.demo.retrofit.RetrofitSimpleActivity;
 import com.mlick.demo.rxandroid.OriginMainActivity;
 import com.mlick.demo.rxandroid.SimpleMainActivity;
 
+import cn.jpush.android.api.JPushInterface;
+
 
 public class MainActivity extends ListActivity {
 
@@ -31,6 +33,8 @@ public class MainActivity extends ListActivity {
             /*7*/"RoundArcActivity",
             /*8*/"OtherActivity"
     /**/};
+
+    public static boolean isForeground = false;
 
 
     @Override
@@ -79,5 +83,24 @@ public class MainActivity extends ListActivity {
         if (intent != null) {
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isForeground = true;
+        JPushInterface.resumePush(getApplicationContext());
+    }
+
+    @Override
+    protected void onPause() {
+        isForeground = false;
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        JPushInterface.stopPush(getApplicationContext());
     }
 }

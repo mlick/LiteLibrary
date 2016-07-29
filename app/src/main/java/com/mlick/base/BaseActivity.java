@@ -2,6 +2,7 @@ package com.mlick.base;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -9,15 +10,18 @@ import com.lite.library.base.BaseDaoActivity;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by lxx on 2016/5/19 15:46
  */
 public abstract class BaseActivity extends BaseDaoActivity {
 
+    private Unbinder unbinder;
+
     @Override
     protected void viewInject() {
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
 
         setWindowTitle();
     }
@@ -51,5 +55,18 @@ public abstract class BaseActivity extends BaseDaoActivity {
             winParams.flags &= ~bits;
         }
         win.setAttributes(winParams);
+    }
+
+
+    //可以重载实现该方式
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (unbinder != null) unbinder.unbind();
     }
 }

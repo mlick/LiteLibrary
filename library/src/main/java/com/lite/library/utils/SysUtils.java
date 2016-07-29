@@ -5,11 +5,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -27,7 +29,8 @@ public class SysUtils {
     public static void hideSoftKeyWord(Activity ctx) {
         View view = ctx.getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) ctx
+                    .getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
@@ -84,6 +87,30 @@ public class SysUtils {
      * @return true 表示有 ||  false表示没有
      */
     public static boolean selfPermissionGranted(Context context, String permission) {
-        return ContextCompat.checkSelfPermission(context, permission) == PermissionChecker.PERMISSION_GRANTED;
+        return ContextCompat
+                .checkSelfPermission(context, permission) == PermissionChecker.PERMISSION_GRANTED;
+    }
+
+
+    /**
+     * 判断是否为debug模式
+     *
+     * @param context 上下文
+     * @return false 表示 release版本 || true 表示debug版本
+     */
+    public static boolean isApkDebugable(Context context) {
+        boolean isDebugable = true;
+        try {
+            ApplicationInfo info = context.getApplicationInfo();
+            if ((info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0) {
+                isDebugable = true;// development mode
+            } else {
+                isDebugable = false;// release mode
+            }
+        } catch (Exception e) {
+            Log.d("SysUtils", e.toString());
+        }
+
+        return isDebugable;
     }
 }

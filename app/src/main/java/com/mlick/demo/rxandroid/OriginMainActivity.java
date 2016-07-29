@@ -6,13 +6,17 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mlick.demo.R;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.exceptions.OnErrorThrowable;
 import rx.functions.Func0;
 
 import static android.os.Process.THREAD_PRIORITY_BACKGROUND;
@@ -25,11 +29,14 @@ public class OriginMainActivity extends Activity {
 
     private Looper backgroundLooper;
 
+    private TextView tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fragment_demo);
+        tv = (TextView) findViewById(R.id.selectBtn_tv);
 
         BackgroundThread backgroundThread = new BackgroundThread();
         backgroundThread.start();
@@ -63,7 +70,8 @@ public class OriginMainActivity extends Activity {
             @Override
             public void onNext(String string) {
                 Log.d(TAG, "onNext(" + string + ")");
-                Toast.makeText(OriginMainActivity.this, string, Toast.LENGTH_SHORT).show();
+                tv.setText(tv.getText() + "\n" + string);
+//                Toast.makeText(OriginMainActivity.this, string, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -72,12 +80,12 @@ public class OriginMainActivity extends Activity {
         return Observable.defer(new Func0<Observable<String>>() {
             @Override
             public Observable<String> call() {
-//                try {
-//                    // Do some long running operation
-//                    Thread.sleep(TimeUnit.SECONDS.toMillis(5));
-//                } catch (InterruptedException e) {
-//                    throw OnErrorThrowable.from(e);
-//                }
+                try {
+                    // Do some long running operation
+                    Thread.sleep(TimeUnit.SECONDS.toMillis(5));
+                } catch (InterruptedException e) {
+                    throw OnErrorThrowable.from(e);
+                }
                 // just : 获取输入数据, 直接分发, 更加简洁, 省略其他回调.
                 return Observable.just("one", "two", "three", "four", "five");
             }

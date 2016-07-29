@@ -33,4 +33,12 @@
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
 
+    <!--推送的弹框的样式-->
+    <style name="notiry_dialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+    </style>
+
 </resources>

@@ -21,8 +21,10 @@ public abstract class BaseDaoActivity extends FragmentActivity implements View.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        viewInject();
+        if (getLayoutId() != 0) {
+            setContentView(getLayoutId());
+            viewInject();
+        }
         baseCtx = this;
         initViewData();
     }
@@ -46,7 +48,8 @@ public abstract class BaseDaoActivity extends FragmentActivity implements View.O
     }
 
     protected void setFragment(Fragment home, int activity_content) {
-        getSupportFragmentManager().beginTransaction().add(activity_content, home).commitAllowingStateLoss();
+        getSupportFragmentManager().beginTransaction().add(activity_content, home)
+                                   .commitAllowingStateLoss();
     }
 
     /**
@@ -64,7 +67,8 @@ public abstract class BaseDaoActivity extends FragmentActivity implements View.O
             mContent = to;
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             if (!to.isAdded()) { // 先判断是否被add过
-                transaction.hide(from).add(activity_content, to).commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
+                transaction.hide(from).add(activity_content, to)
+                           .commitAllowingStateLoss(); // 隐藏当前的fragment，add下一个到Activity中
             } else {
                 transaction.hide(from).show(to).commitAllowingStateLoss(); // 隐藏当前的fragment，显示下一个
             }

@@ -6,11 +6,33 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.mlick.lite"
+        applicationId "com.mlick.demo"
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+
+    signingConfigs {
+        debug {
+            storeFile file("doc/debug.keystore")
+            storePassword "123456l"
+            keyAlias "debug.keystore"
+            keyPassword "123456l"
+        }
+        release {
+            storeFile file("doc/debug.keystore")
+            storePassword "123456l"
+            keyAlias "debug.keystore"
+            keyPassword "123456l"
+        }
     }
     buildTypes {
         debug {
@@ -24,12 +46,14 @@ android {
         }
     }
 }
+
 repositories {
     maven { url "https://jitpack.io" }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+
     compile project(':library')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
