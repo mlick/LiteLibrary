@@ -91,7 +91,7 @@ public class ProgressAnimationView2 extends View {
 
     public void stopAnimation() {
         if (animator != null) {
-            animator.cancel();
+            animator.end();
         }
     }
 

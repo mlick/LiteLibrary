@@ -1,5 +1,6 @@
 package com.mlick.demo.animation;
 
+import android.util.Log;
 import android.view.View;
 
 import com.mlick.base.BaseActivity;
@@ -52,8 +53,16 @@ public class ProgressAnimationActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        if (animationView != null) {
+            Log.d("ProgressAniActivity", "OnDestroy");
+            animationView.stopAnimation();
+        }
+        if (animationView2 != null) {
+            Log.d("ProgressAniActivity", "OnDestroy");
+            animationView2.stopAnimation();
+        }
+        animationView = null;
+        animationView2 = null;
         super.onDestroy();
-        animationView.stopAnimation();
-        animationView2.stopAnimation();
     }
 }
