@@ -40,7 +40,7 @@ public abstract class BaseDaoActivity extends FragmentActivity implements View.O
     }
 
     protected void showToast(String s) {
-        if (toast != null) {
+        if (toast != null) {// 防止多个重复显示
             toast.cancel();
         }
         toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);

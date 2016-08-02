@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.1"
 
     defaultConfig {
         applicationId "com.mlick.demo"
         minSdkVersion 14
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -53,27 +53,26 @@ repositories {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
+    compile 'com.android.support:recyclerview-v7:24.1.1'
+//    compile 'com.android.support:appcompat-v7:24.0.0'
+//    compile 'com.android.support:support-v4:24.0.0'
     compile project(':library')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
     //    compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.jakewharton:butterknife:8.0.1'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-
     compile 'io.reactivex:rxandroid:1.2.0'
-// Because RxAndroid releases are few and far between, it is recommended you also
-// explicitly depend on RxJava's latest version for bug fixes and new features.
+    // Because RxAndroid releases are few and far between, it is recommended you also
+    // explicitly depend on RxJava's latest version for bug fixes and new features.
     compile 'io.reactivex:rxjava:1.1.5'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.5'
-
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta3'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.1'
     compile 'com.squareup.retrofit2:converter-scalars:2.0.1'
     compile 'org.ligboy.retrofit2:converter-fastjson-android:2.0.2'
-
     compile 'com.nineoldandroids:library:2.4.0'
-//    compile 'org.testng:testng:6.9.6'
+    //    compile 'org.testng:testng:6.9.6'
+    compile 'jp.wasabeef:recyclerview-animators:2.2.3'
 }
