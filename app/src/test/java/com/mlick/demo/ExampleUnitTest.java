@@ -195,4 +195,21 @@ public class ExampleUnitTest implements Serializable {
         }
         return sb.toString();
     }
+
+    @Test
+    public void testMemory() {
+        long startTime = System.currentTimeMillis();
+        Integer sum = 0;
+        for (int i = 0; i < 50000; i++) {
+            sum += i;
+        }
+        System.out.println(">>>" + (System.currentTimeMillis() - startTime));
+
+        long startTime2 = System.currentTimeMillis();
+        int sum2 = 0;
+        for (int i = 0; i < 50000; i++) {
+            sum2 += i;
+        }
+        System.out.print(">>>" + (System.currentTimeMillis() - startTime2));
+    }
 }

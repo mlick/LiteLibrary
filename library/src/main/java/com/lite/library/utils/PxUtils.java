@@ -5,7 +5,7 @@ import android.content.Context;
 /**
  * @author yangyu 功能描述：常量工具类
  */
-public class PxUtil {
+public class PxUtils {
 	/**
 	 * 得到设备屏幕的宽度
 	 */

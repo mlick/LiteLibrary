@@ -3,16 +3,20 @@ package com.mlick.demo;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.lite.library.utils.AppUtils;
 import com.mlick.demo.animation.AnimationActivity;
 import com.mlick.demo.animation.ProgressAnimationActivity;
 import com.mlick.demo.animation.RoundArcActivity;
 import com.mlick.demo.butterknife.DemoActivity;
 import com.mlick.demo.butterknife.DemoFragmentActivity;
 import com.mlick.demo.other.jiankangduoduo.PlayBodyFatScalesActivity;
+import com.mlick.demo.recyclerview.ListDemoActivity;
 import com.mlick.demo.retrofit.RetrofitSimpleActivity;
 import com.mlick.demo.rxandroid.OriginMainActivity;
 import com.mlick.demo.rxandroid.SimpleMainActivity;
@@ -31,11 +35,26 @@ public class MainActivity extends ListActivity {
             /*5*/"AnimationActivity",
             /*6*/"ProgressAnimationActivity",
             /*7*/"RoundArcActivity",
-            /*8*/"OtherActivity"
+            /*8*/"OtherActivity",
+            /*9*/"ListDemoActivity"
     /**/};
 
     public static boolean isForeground = false;
 
+
+//    private MyBradcase myBradcase;
+//
+//    public class MyBradcase extends BroadcastReceiver {
+//
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            Log.d("MainActivity", "[MyReceiver] MyBradcase");
+//            Intent pushIntent = new Intent(context, NotifyDialogActivity.class);
+//            pushIntent.putExtra("bundle", intent.getBundleExtra("bundle"));
+//            pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            context.startActivity(pushIntent);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +64,21 @@ public class MainActivity extends ListActivity {
         setListAdapter(adapter);
 //        DigUtils.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
 //        DigUtils.getCustomProgressDialog(this, "加载中").show();
+//        registerReceiver(myBradcase = new MyBradcase(), new IntentFilter("MyPush"));
+
+        Log.d("==>", AppUtils.isAppBackground(this) + "");
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.d("5==>", AppUtils.isAppBackground(MainActivity.this) + "");
+            }
+        }, 5000);
+//        if (getIntent().getBooleanExtra("push", false)) {
+//            Intent pushIntent = new Intent(this, NotifyDialogActivity.class);
+//            pushIntent.putExtra("bundle", getIntent().getBundleExtra("bundle"));
+//            pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(pushIntent);
+//        }
     }
 
     @Override
@@ -78,6 +112,9 @@ public class MainActivity extends ListActivity {
             case 8:
                 intent = new Intent(this, PlayBodyFatScalesActivity.class);//Other
                 break;
+            case 9:
+                intent = new Intent(this, ListDemoActivity.class);//Other
+                break;
 
         }
         if (intent != null) {
@@ -101,6 +138,9 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        JPushInterface.stopPush(getApplicationContext());
+//        if (myBradcase != null) {
+//            unregisterReceiver(myBradcase);
+//        }
+        JPushInterface.stopPush(getApplicationContext());
     }
 }

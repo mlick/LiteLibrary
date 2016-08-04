@@ -17,7 +17,7 @@ import cn.jpush.android.api.JPushInterface;
 
 /**
  * 自定义接收器
- * <p>
+ * <p/>
  * 如果不定义这个 Receiver，则：
  * 1) 默认用户会打开主界面
  * 2) 接收不到自定义消息
@@ -49,13 +49,6 @@ public class MyReceiver extends BroadcastReceiver {
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户点击打开了通知");
             dealWithPushInfo(context);
-//        	//打开自定义的Activity
-//        	Intent i = new Intent(context, TestActivity.class);
-//        	i.putExtras(bundle);
-//        	//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        	i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
-//        	context.startActivity(i);
-
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle
                     .getString(JPushInterface.EXTRA_EXTRA));
@@ -72,17 +65,27 @@ public class MyReceiver extends BroadcastReceiver {
     }
 
     private void processPushMessage(Context context, Bundle bundle) {
-        if (!MainActivity.isForeground) {// 不在前台的话，就不弹框
-            return;
-        }
+//        if (!MainActivity.isForeground) {// 不在前台的话，就不弹框
+//            return;
+//        }
+//        if (!AppUtils.isAppBackground(context)) {// 不在前台的话，就不弹框
+//            return;
+//        }
         String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
         try {
             JSONObject jsonObject = new JSONObject(extras);
             if ("kick".equals(jsonObject.getString("type"))) {
+                Log.d("MyReceiver", "processPushMessage");
                 Intent pushIntent = new Intent(context, NotifyDialogActivity.class);
                 pushIntent.putExtra("bundle", bundle);
                 pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(pushIntent);
+//                Intent pushIntent = new Intent(context, MainActivity.class);
+////                pushIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                pushIntent.putExtra("push", true);
+//                pushIntent.putExtra("bundle", bundle);
+//                context.sendBroadcast(pushIntent);
             }
         } catch (JSONException e) {
             e.printStackTrace();

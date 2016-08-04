@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 
-import com.lite.library.utils.PxUtil;
+import com.lite.library.utils.PxUtils;
 
 
 /**
@@ -117,9 +117,9 @@ public class RoundArcView extends View {
     void init() {
         this.setClickable(true);
 
-        roundMargin = PxUtil.dip2px(getContext(), roundMargin);
-        innerArcWidth = PxUtil.dip2px(getContext(), 15);
-        textSize = PxUtil.dip2px(getContext(), 13);
+        roundMargin = PxUtils.dip2px(getContext(), roundMargin);
+        innerArcWidth = PxUtils.dip2px(getContext(), 15);
+        textSize = PxUtils.dip2px(getContext(), 13);
 
 
         textPaint = new Paint();

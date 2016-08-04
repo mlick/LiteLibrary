@@ -75,4 +75,5 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     //    compile 'org.testng:testng:6.9.6'
     compile 'jp.wasabeef:recyclerview-animators:2.2.3'
+    compile 'cn.pedant.sweetalert:library:1.3'
 }

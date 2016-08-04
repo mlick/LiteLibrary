@@ -1,6 +1,7 @@
 package com.mlick.demo;
 
 import android.app.Application;
+import android.util.Log;
 
 import cn.jpush.android.api.JPushInterface;
 
@@ -19,5 +20,7 @@ public class DemoApplication extends Application {
 
         JPushInterface.setDebugMode(true);    // 设置开启日志,发布时请关闭日志
         JPushInterface.init(this);            // 初始化 JPush
+
+        Log.d("MainActivity ===>>> ", JPushInterface.getRegistrationID(this));
     }
 }

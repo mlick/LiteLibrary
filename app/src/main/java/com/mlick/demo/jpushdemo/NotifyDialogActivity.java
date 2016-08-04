@@ -2,16 +2,16 @@ package com.mlick.demo.jpushdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import com.mlick.base.BaseActivity;
 import com.mlick.demo.MainActivity;
 import com.mlick.demo.R;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by lxx on 2016/6/2 16:39
@@ -19,19 +19,42 @@ import cn.jpush.android.api.JPushInterface;
 public class NotifyDialogActivity extends BaseActivity {
 
     public Bundle bundle;
-
-    @BindView(R.id.notify_dialog_content) TextView textView;
+    SweetAlertDialog sad;
+//    @BindView(R.id.notify_dialog_content) TextView textView;
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_notifydialog;
+        return 0;//R.layout.activity_notifydialog;
     }
 
     @Override
     public void initViewData() {
+
+        Log.d("NotifyDialogActivity", "initViewData");
         bundle = getIntent().getBundleExtra("bundle");
         String alert = bundle.getString(JPushInterface.EXTRA_ALERT);
-        textView.setText(alert);
+//        textView.setText(alert);
+
+        sad = new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Are you sure?").setContentText(alert)
+//                .setCancelText("取消")
+                .setConfirmText("重新登陆").showCancelButton(false)
+//                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                    @Override
+//                    public void onClick(SweetAlertDialog sDialog) {
+//                        finishActivity();
+//                    }
+//                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        JPushInterface.clearAllNotifications(NotifyDialogActivity.this);
+                        finishActivity();
+                    }
+                });
+        sad.setCancelable(false);
+        sad.setCanceledOnTouchOutside(false);
+        sad.show();
     }
 
     @OnClick({R.id.notify_dialog_cancle, R.id.notify_dialog_sure})
@@ -47,5 +70,13 @@ public class NotifyDialogActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sad = null;
+        System.gc();
     }
 }
