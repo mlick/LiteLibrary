@@ -54,6 +54,7 @@ public class OriginMainActivity extends Activity {
         sampleObservable()
                 // Run on a background thread
                 .subscribeOn(AndroidSchedulers.from(backgroundLooper))
+                .unsubscribeOn(AndroidSchedulers.mainThread())
                 // Be notified on the main thread
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<String>() {
             @Override

@@ -3,8 +3,8 @@ package com.lite.library.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,7 +13,7 @@ import android.widget.Toast;
  * Created by lxx on 2016/5/3 16:47
  * Activity基类 封装基本的操作
  */
-public abstract class BaseDaoActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BaseDaoActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Toast toast;
     protected Context baseCtx;//基类中通用的context

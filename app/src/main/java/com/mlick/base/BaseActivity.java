@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.lite.library.base.BaseDaoActivity;
+import com.mlick.demo.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import butterknife.ButterKnife;
@@ -22,8 +23,11 @@ public abstract class BaseActivity extends BaseDaoActivity {
     @Override
     protected void viewInject() {
         unbinder = ButterKnife.bind(this);
+//        setWindowTitle(setwindowTitleColor());
+    }
 
-        setWindowTitle();
+    protected int setwindowTitleColor() {//可以重载，自定义windowtitle的背景颜色
+        return R.color.colorPrimary;
     }
 
     protected void setWindowTitle(int color) {
@@ -34,15 +38,14 @@ public abstract class BaseActivity extends BaseDaoActivity {
             tintManager.setStatusBarTintColor(color);//通知栏所需颜色
         }
     }
-
-    private void setWindowTitle() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//添加window的标题为统一颜色,
-            setTranslucentStatus(true);
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            tintManager.setStatusBarTintEnabled(true);
-            tintManager.setStatusBarTintResource(android.R.color.transparent);//通知栏所需颜色
-        }
-    }
+//    private void setWindowTitle() {
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//添加window的标题为统一颜色,
+//            setTranslucentStatus(true);
+//            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//            tintManager.setStatusBarTintEnabled(true);
+//            tintManager.setStatusBarTintResource(android.R.color.transparent);//通知栏所需颜色
+//        }
+//    }
 
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {

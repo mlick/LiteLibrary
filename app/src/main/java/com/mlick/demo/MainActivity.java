@@ -3,123 +3,51 @@ package com.mlick.demo;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import com.lite.library.utils.AppUtils;
-import com.mlick.demo.animation.AnimationActivity;
-import com.mlick.demo.animation.ProgressAnimationActivity;
-import com.mlick.demo.animation.RoundArcActivity;
-import com.mlick.demo.butterknife.DemoActivity;
-import com.mlick.demo.butterknife.DemoFragmentActivity;
-import com.mlick.demo.other.jiankangduoduo.PlayBodyFatScalesActivity;
-import com.mlick.demo.recyclerview.ListDemoActivity;
-import com.mlick.demo.retrofit.RetrofitSimpleActivity;
-import com.mlick.demo.rxandroid.OriginMainActivity;
-import com.mlick.demo.rxandroid.SimpleMainActivity;
 
 import cn.jpush.android.api.JPushInterface;
 
 
 public class MainActivity extends ListActivity {
 
-    private String[] items = {
-            /*0*/"ButterKnifeDemo",
-            /*1*/"ButterKnifeFragmentDemo",
-            /*2*/"RxAndroidDemo",
-            /*3*/"RxAndroidOriginDemo",
-            /*4*/"RetrofitSimpleActivity",
-            /*5*/"AnimationActivity",
-            /*6*/"ProgressAnimationActivity",
-            /*7*/"RoundArcActivity",
-            /*8*/"OtherActivity",
-            /*9*/"ListDemoActivity"
+    private String[][] items = {//显示的命，类名，注解
+            /*0*/{"ButterKnifeDemo", "butterknife.DemoActivity", "ButterKnife普通的demo"},
+            /*1*/{"ButterKnifeFragmentDemo", "butterknife.DemoFragmentActivity", "带Fragment的ButterKnife的demo"},
+            /*2*/{"RxAndroidDemo", "rxandroid.SimpleMainActivity", "RxAndroid的demo"},
+            /*3*/{"RxAndroidOriginDemo", "rxandroid.OriginMainActivity", "RxAndroid的官方demo"},
+            /*4*/{"RetrofitSimpleActivity", "retrofit.RetrofitSimpleActivity", "Retrofit的官方demo"},
+            /*5*/{"AnimationActivity", "animation.AnimationActivity", "动画demo1"},
+            /*6*/{"ProgressAnimationActivity", "animation.ProgressAnimationActivity", "进度条动画"},
+            /*7*/{"RoundArcActivity", "animation.RoundArcActivity", "半圆动画"},
+            /**/{"ListDemoActivity", "recyclerview.ListDemoActivity", "RecyclerView的demo"},
+            /**/{"OtherActivity1", "other.jiankangduoduo.PlayBodyFatScalesActivity", "其它demo"}
     /**/};
 
     public static boolean isForeground = false;
-
-
-//    private MyBradcase myBradcase;
-//
-//    public class MyBradcase extends BroadcastReceiver {
-//
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//            Log.d("MainActivity", "[MyReceiver] MyBradcase");
-//            Intent pushIntent = new Intent(context, NotifyDialogActivity.class);
-//            pushIntent.putExtra("bundle", intent.getBundleExtra("bundle"));
-//            pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            context.startActivity(pushIntent);
-//        }
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+        String[] showItems = new String[items.length];
+        for (int i = 0; i < items.length; i++) {
+            showItems[i] = items[i][0];
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, showItems);
         setListAdapter(adapter);
-//        DigUtils.getCustomProgressDialog(this, "加载中", R.style.ProgressDialogTheme).show();
-//        DigUtils.getCustomProgressDialog(this, "加载中").show();
-//        registerReceiver(myBradcase = new MyBradcase(), new IntentFilter("MyPush"));
-
-        Log.d("==>", AppUtils.isAppBackground(this) + "");
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Log.d("5==>", AppUtils.isAppBackground(MainActivity.this) + "");
-            }
-        }, 5000);
-//        if (getIntent().getBooleanExtra("push", false)) {
-//            Intent pushIntent = new Intent(this, NotifyDialogActivity.class);
-//            pushIntent.putExtra("bundle", getIntent().getBundleExtra("bundle"));
-//            pushIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(pushIntent);
-//        }
     }
 
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
-        Intent intent = null;
-        switch (position) {
-            case 0:
-                intent = new Intent(this, DemoActivity.class);//ButterKnife
-                break;
-            case 1:
-                intent = new Intent(this, DemoFragmentActivity.class);//ButterKnife
-                break;
-            case 2:
-                intent = new Intent(this, SimpleMainActivity.class);//RxAndroid
-                break;
-            case 3:
-                intent = new Intent(this, OriginMainActivity.class);//RxAndroid
-                break;
-            case 4:
-                intent = new Intent(this, RetrofitSimpleActivity.class);//Retrofit
-                break;
-            case 5:
-                intent = new Intent(this, AnimationActivity.class);//Animation
-                break;
-            case 6:
-                intent = new Intent(this, ProgressAnimationActivity.class);//Animation
-                break;
-            case 7:
-                intent = new Intent(this, RoundArcActivity.class);//Animation
-                break;
-            case 8:
-                intent = new Intent(this, PlayBodyFatScalesActivity.class);//Other
-                break;
-            case 9:
-                intent = new Intent(this, ListDemoActivity.class);//Other
-                break;
-
+        Intent intent = new Intent();
+        try {
+            intent.setClassName("com.mlick.demo", "com.mlick.demo." + items[position][1]);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if (intent != null) {
-            startActivity(intent);
-        }
+        startActivity(intent);
     }
 
     @Override
@@ -138,9 +66,6 @@ public class MainActivity extends ListActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        if (myBradcase != null) {
-//            unregisterReceiver(myBradcase);
-//        }
         JPushInterface.stopPush(getApplicationContext());
     }
 }
