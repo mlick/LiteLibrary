@@ -7,10 +7,10 @@ android {
 
     defaultConfig {
         applicationId "com.mlick.demo"
-        minSdkVersion 14
+        minSdkVersion 11
         targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
+        versionCode 217
+        versionName "2.1.7"
     }
 
     sourceSets {

@@ -98,7 +98,7 @@ public class ProgressAnimationView2 extends View {
 
     public boolean isAnimation() {
         if (animator != null) {
-            return animator.isStarted();
+            return animator.isRunning();
         }
         return false;
     }

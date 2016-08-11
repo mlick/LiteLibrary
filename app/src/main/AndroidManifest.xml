@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
-          package="com.mlick.demo"
-          android:versionCode="217"
-          android:versionName="2.1.7"
-    >
-
-    <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="21"/>
+          package="com.mlick.demo">
     <permission
         android:name="com.mlick.demo.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature"/>

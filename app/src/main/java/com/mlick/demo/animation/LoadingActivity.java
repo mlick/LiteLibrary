@@ -54,7 +54,6 @@ public class LoadingActivity extends BaseActivity {
         objectAnimator.start();
     }
 
-
     /**
      * 跳转到首页
      */
@@ -65,6 +64,7 @@ public class LoadingActivity extends BaseActivity {
         try {
             intent.setClassName("com.mlick.demo", "com.mlick.demo.MainActivity");
             startActivity(intent);
+            finishActivity();
         } catch (Exception e) {
             e.printStackTrace();
         }

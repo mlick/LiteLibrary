@@ -8,14 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme2" parent="Theme.AppCompat.Light">
+    <style name="AppTheme2" parent="@style/Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:disabledAlpha">0.5</item>
+        <item name="android:windowBackground">@color/normalBackground</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:fadingEdgeLength">0.0dip</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="searchViewStyle">@style/MySearchViewStyle</item>
+        <item name="windowActionModeOverlay">true</item>
         <!-- <item name="android:fitsSystemWindows">true</item>  此种方式有问题，不可直接全局使用，会产生一系列的问题-->
     </style>
-
+    <style name="MySearchViewStyle" parent="@style/Widget.AppCompat.SearchView" />
     <style name="ProgressDialogTheme" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:fitsSystemWindows">false</item>
         <item name="android:clipToPadding">false</item>
