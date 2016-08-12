@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.mlick.demo.animation.MyFamilyEntity;
+
 import cn.jpush.android.api.JPushInterface;
 
 
@@ -37,6 +39,9 @@ public class MainActivity extends ListActivity {
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, showItems);
         setListAdapter(adapter);
+
+        MyFamilyEntity serBean2 = (MyFamilyEntity) getIntent().getExtras().get("aaa2");
+        serBean2.getSerBean2().test();
     }
 
     @Override
