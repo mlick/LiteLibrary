@@ -1,4 +1,4 @@
-package com.mlick.demo.animation;
+package com.mlick.demo.animation.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;

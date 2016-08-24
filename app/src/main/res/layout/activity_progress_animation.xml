@@ -12,34 +12,34 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <com.mlick.demo.animation.RadarView
+        <com.mlick.demo.animation.view.RadarView
             android:layout_width="match_parent"
             android:background="@android:color/holo_blue_dark"
             android:layout_height="400dp"/>
 
-        <com.mlick.demo.animation.NetView
+        <com.mlick.demo.animation.view.NetView
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.RadarScan.RadarScanView
+        <com.mlick.demo.animation.radarscan.RadarScanView
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.RadarScan.RefreshProgress
+        <com.mlick.demo.animation.radarscan.RefreshProgress
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.RadarView2
+        <com.mlick.demo.animation.view.RadarView2
             android:layout_width="300dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.ProgressAnimationView
+        <com.mlick.demo.animation.view.ProgressAnimationView
             android:id="@+id/animation"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:background="#4692DE"/>
 
-        <com.mlick.demo.animation.ProgressAnimationView2
+        <com.mlick.demo.animation.view.ProgressAnimationView2
             android:id="@+id/animation2"
             android:layout_width="180dp"
             android:layout_height="180dp"
@@ -47,7 +47,7 @@
             android:layout_marginTop="10dp"
             android:background="#4692DE"/>
 
-        <com.mlick.demo.animation.CircleProgress
+        <com.mlick.demo.animation.view.CircleProgress
             android:id="@+id/animation3"
             android:layout_width="50dp"
             android:layout_height="wrap_content"

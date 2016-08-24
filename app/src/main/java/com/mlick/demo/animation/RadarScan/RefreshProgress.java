@@ -1,4 +1,4 @@
-package com.mlick.demo.animation.RadarScan;
+package com.mlick.demo.animation.radarscan;
 
 
 import android.content.Context;

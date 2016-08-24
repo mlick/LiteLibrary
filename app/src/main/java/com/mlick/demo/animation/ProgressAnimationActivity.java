@@ -5,6 +5,8 @@ import android.view.View;
 
 import com.mlick.base.BaseActivity;
 import com.mlick.demo.R;
+import com.mlick.demo.animation.view.ProgressAnimationView;
+import com.mlick.demo.animation.view.ProgressAnimationView2;
 
 import butterknife.BindView;
 import butterknife.OnClick;

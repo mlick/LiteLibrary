@@ -6,7 +6,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <com.mlick.demo.animation.RoundArcView
+    <com.mlick.demo.animation.view.RoundArcView
         android:id="@+id/roundArcView"
         android:layout_width="match_parent"
         android:background="@drawable/bg_gradient_theme"
