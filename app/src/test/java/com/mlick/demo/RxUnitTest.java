@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Observer;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -35,6 +36,28 @@ public class RxUnitTest {
                       @Override
                       public void onError(Throwable e) {
                           System.out.println("onCompleted");
+                      }
+
+                      @Override
+                      public void onNext(Long aLong) {
+                          System.out.println("aLong: " + aLong);
+                      }
+                  });
+    }
+
+
+    @Test
+    public void testThread() {
+        Observable.timer(2, TimeUnit.SECONDS, AndroidSchedulers.mainThread())
+                  .subscribe(new Observer<Long>() {
+                      @Override
+                      public void onCompleted() {
+
+                      }
+
+                      @Override
+                      public void onError(Throwable e) {
+
                       }
 
                       @Override

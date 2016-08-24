@@ -22,8 +22,7 @@ public class AnimationActivity extends BaseActivity {
 
 
     @BindView(R.id.iv) View iv;
-    //    @BindView(R.id.start)
-    Button button;
+    @BindView(R.id.start) Button button;
     ObjectAnimator animator;
 
     private boolean isFirstLoading = true, isShow = false;
@@ -82,7 +81,8 @@ public class AnimationActivity extends BaseActivity {
         Log.d("AnimationActivity", "toTopHeight ==> " + toTopHeight + "");
         if (isFirstLoading) {
             isFirstLoading = false;
-            ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(iv.getLayoutParams());
+            ViewGroup.MarginLayoutParams marginLayoutParams = new ViewGroup.MarginLayoutParams(iv
+                    .getLayoutParams());
             marginLayoutParams.height = toTopHeight;
             marginLayoutParams.setMargins(0, -toTopHeight, 0, 0);
             marginLayoutParams.height = toTopHeight;
@@ -99,17 +99,19 @@ public class AnimationActivity extends BaseActivity {
     }
 
     private void showOrHideIv(int toHeight) {
-        if (isShow) {
+        if (isShow) {// 显示
             animator = ObjectAnimator.ofFloat(iv, "translationY", toHeight, 0);
             animator.addListener(new Animator.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animation) {
                     iv.setVisibility(View.VISIBLE);
+                    setStartBtn(true);
                 }
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     isShow = false;
+                    setStartBtn(false);
                 }
 
                 @Override
@@ -128,11 +130,13 @@ public class AnimationActivity extends BaseActivity {
                 @Override
                 public void onAnimationStart(Animator animation) {
                     iv.setVisibility(View.VISIBLE);
+                    setStartBtn(true);
                 }
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     isShow = true;
+                    setStartBtn(false);
                 }
 
                 @Override
@@ -156,5 +160,10 @@ public class AnimationActivity extends BaseActivity {
         //Here you can get the size!
 //        button.setText(iv.getHeight() + "," + iv.getWidth() + "," + iv.getMeasuredHeight() + "," + iv
 //                .getMeasuredWidth());
+    }
+
+    public void setStartBtn(boolean isStart) {
+        button.setEnabled(!isStart);
+        button.setText(isShow ? "上拉" : "下拉");
     }
 }

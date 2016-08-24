@@ -9,19 +9,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.mlick.demo.animation.AutoMesuseLayout
+        <!--可以是个图片，也可以是个控件-->
+        <View
             android:id="@+id/iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1000dp"
-            android:background="@android:color/black"/>
+            android:background="#5fcc0000"/>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="300dp"
-        android:background="@android:color/holo_red_dark"/>
+        android:background="#ffcc0000"/>
 
 
     <Button
@@ -30,5 +31,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
-        android:text="start"/>
+        android:text="下拉"/>
 </RelativeLayout>

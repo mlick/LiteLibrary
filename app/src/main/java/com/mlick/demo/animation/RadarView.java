@@ -20,7 +20,7 @@ public class RadarView extends View {
 
     private String mImageUrl;
     private boolean threadIsRunning = false;
-    private int start = 0;
+    private float start = 0;
     private RadarThread radarThread;
 
     private Paint mPaintBitmap;//换中间图片的画笔
@@ -29,7 +29,7 @@ public class RadarView extends View {
     private Matrix matrix; //重点在这了，通过矩阵变换，做出扫描效果。
 
     private Bitmap mBitmap; //用户自定义图片的圆角图
-    private float mBitmapWidth = 150;//中心图片默认的宽度，这里是px
+    private float mBitmapWidth = 400;//中心图片默认的宽度，这里是px
     private float mCircleMargin = 30;//距离宽度，默认是px
     private float mCircleWidth = 2;//圆圈的画笔宽度，默认px
     private int mCircleColor = Color.RED; //最内层圈圈的颜色，下面依次
@@ -109,6 +109,7 @@ public class RadarView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mHeight = getMeasuredHeight();
         mWidth = getMeasuredWidth();
+        mBitmapWidth = mWidth / 2;
     }
 
     @Override
@@ -153,7 +154,8 @@ public class RadarView extends View {
 
         // 绘制渐变圆
 
-        Shader shader = new SweepGradient(0, 0, Color.TRANSPARENT, mScanColor);
+//        Shader shader = new SweepGradient(0, 0, Color.TRANSPARENT, mScanColor);
+        Shader shader = new SweepGradient(0, 0, Color.TRANSPARENT, Color.WHITE);
 
         mPaintCircle.setShader(shader);
 
@@ -216,13 +218,13 @@ public class RadarView extends View {
                 RadarView.this.post(new Runnable() {
                     @Override
                     public void run() {
-                        start = start + 1;
+                        start = start + 0.5f;
                         matrix.setRotate(start, 0, 0); //因为我对画笔进行了平移，0，0表示绕圆的中心点转动
                         RadarView.this.invalidate();
                     }
                 });
                 try {
-                    Thread.sleep(5);
+                    Thread.sleep(4);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

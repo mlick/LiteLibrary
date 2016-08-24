@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools"
           package="com.mlick.demo">
+
     <permission
         android:name="com.mlick.demo.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature"/>
@@ -42,6 +43,10 @@
         <activity
             android:name="com.mlick.demo.animation.LoadingActivity"
             android:theme="@style/AppTheme">
+
+        </activity>
+        <activity
+            android:name="com.mlick.demo.rxandroid.rxbus.RxBusDemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -188,5 +193,11 @@
             android:name="JPUSH_APPKEY"
             android:value="c94fcc07695b1098ce1d826f"/> <!--  </>值来自开发者平台取得的AppKey-->
 
+
+        <receiver android:name=".network.MyNetReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>
