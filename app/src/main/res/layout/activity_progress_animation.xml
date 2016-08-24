@@ -21,11 +21,11 @@
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.radarscan.RadarScanView
+        <com.mlick.demo.animation.radar.RadarScanView
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 
-        <com.mlick.demo.animation.radarscan.RefreshProgress
+        <com.mlick.demo.animation.radar.RefreshProgress
             android:layout_width="200dp"
             android:layout_height="200dp"/>
 

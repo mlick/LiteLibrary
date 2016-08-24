@@ -1,4 +1,4 @@
-package com.mlick.demo.animation.RadarScan;
+package com.mlick.demo.animation.radar;
 
 
 import android.annotation.TargetApi;
@@ -15,10 +15,9 @@ import android.view.View;
 
 
 /**
- * Created by 郭攀峰 on 2015/8/19.
+ * Created on 2015/8/19.
  */
-public class RadarScanView extends View
-{
+public class RadarScanView extends View {
     private static final int DEFAULT_WIDTH = 300;
     private static final int DEFAULT_HEIGHT = 300;
 
@@ -37,11 +36,9 @@ public class RadarScanView extends View
     private Matrix matrix;
 
     private Handler handler = new Handler();
-    private Runnable run = new Runnable()
-    {
+    private Runnable run = new Runnable() {
         @Override
-        public void run()
-        {
+        public void run() {
             start += 2;
             matrix = new Matrix();
             matrix.postRotate(start, centerX, centerY);
@@ -50,43 +47,36 @@ public class RadarScanView extends View
         }
     };
 
-    public RadarScanView(Context context)
-    {
+    public RadarScanView(Context context) {
         super(context);
         init(null, context);
     }
 
-    public RadarScanView(Context context, AttributeSet attrs)
-    {
+    public RadarScanView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(attrs, context);
     }
 
-    public RadarScanView(Context context, AttributeSet attrs, int defStyleAttr)
-    {
+    public RadarScanView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs, context);
     }
 
     @TargetApi(21)
-    public RadarScanView(Context context, AttributeSet attrs, int defStyleAttr,
-            int defStyleRes)
-    {
+    public RadarScanView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs, context);
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh)
-    {
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         centerX = w / 2;
         centerY = h / 2;
         radarRadius = Math.min(w, h);
     }
 
-    private void init(AttributeSet attrs, Context context)
-    {
+    private void init(AttributeSet attrs, Context context) {
 //        if (attrs != null)
 //        {
 //            TypedArray ta = context.obtainStyledAttributes(attrs,
@@ -107,8 +97,7 @@ public class RadarScanView extends View
         handler.post(run);
     }
 
-    private void initPaint()
-    {
+    private void initPaint() {
         mPaintCircle = new Paint();
         mPaintCircle.setColor(circleColor);
         mPaintCircle.setAntiAlias(true);//抗锯齿
@@ -121,21 +110,16 @@ public class RadarScanView extends View
     }
 
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec)
-    {
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int resultWidth = 0;
         int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
         int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
 
-        if (modeWidth == MeasureSpec.EXACTLY)
-        {
+        if (modeWidth == MeasureSpec.EXACTLY) {
             resultWidth = sizeWidth;
-        }
-        else
-        {
+        } else {
             resultWidth = defaultWidth;
-            if (modeWidth == MeasureSpec.AT_MOST)
-            {
+            if (modeWidth == MeasureSpec.AT_MOST) {
                 resultWidth = Math.min(resultWidth, sizeWidth);
             }
         }
@@ -143,15 +127,11 @@ public class RadarScanView extends View
         int resultHeight = 0;
         int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
         int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
-        if (modeHeight == MeasureSpec.EXACTLY)
-        {
+        if (modeHeight == MeasureSpec.EXACTLY) {
             resultHeight = sizeHeight;
-        }
-        else
-        {
+        } else {
             resultHeight = defaultHeight;
-            if (modeHeight == MeasureSpec.AT_MOST)
-            {
+            if (modeHeight == MeasureSpec.AT_MOST) {
                 resultHeight = Math.min(resultHeight, sizeHeight);
             }
         }
@@ -160,8 +140,7 @@ public class RadarScanView extends View
     }
 
     @Override
-    protected void onDraw(Canvas canvas)
-    {
+    protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
         //分别绘制四个圆
@@ -172,21 +151,19 @@ public class RadarScanView extends View
 
         //设置颜色渐变从透明到不透明
         //        Shader shader = new SweepGradient(centerX, centerY, Color.TRANSPARENT, tailColor);
-        Shader shader = new SweepGradient(centerX, centerY, Color.parseColor("#00A8D7A7"),
-            Color.parseColor("#ffA8D7A7"));
+        Shader shader = new SweepGradient(centerX, centerY, Color.parseColor("#00A8D7A7"), Color
+                .parseColor("#ffA8D7A7"));
         mPaintRadar.setShader(shader);
         canvas.concat(matrix);
         canvas.drawCircle(centerX, centerY, 3 * radarRadius / 7, mPaintRadar);
     }
 
-    private int dip2px(Context context, float dipValue)
-    {
+    private int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
-    private int px2dip(Context context, float pxValue)
-    {
+    private int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
     }
