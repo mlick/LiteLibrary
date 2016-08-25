@@ -212,4 +212,14 @@ public class ExampleUnitTest implements Serializable {
         }
         System.out.print(">>>" + (System.currentTimeMillis() - startTime2));
     }
+
+
+    @Test
+    public void testMath() {
+        System.out.print(Math.round(98.0 / 66.0));
+        System.out.print(Math.round(33.0 / 66.0));
+        System.out.print(Math.round(164 / 66.0));
+        System.out.print(Math.round(362 / 66.0));
+
+    }
 }

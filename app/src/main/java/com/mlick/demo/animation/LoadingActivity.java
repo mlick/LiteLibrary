@@ -66,16 +66,16 @@ public class LoadingActivity extends BaseActivity {
 //            SerBean object = new SerBean(new SerBean2());
 //            object.setString("1111111");
 //            intent.putExtra("aaa", object);
-            MyFamilyEntity myFamilyEntity = new MyFamilyEntity();
-            myFamilyEntity.setSerBean2(new SerBean2()
-//            {
-//                @Override
-//                public void test() {
-//                    Log.d("t", "ttt");
-//                }
-//            }
-            );
-            intent.putExtra("aaa2", myFamilyEntity);
+//            MyFamilyEntity myFamilyEntity = new MyFamilyEntity();
+//            myFamilyEntity.setSerBean2(new SerBean2()
+////            {
+////                @Override
+////                public void test() {
+////                    Log.d("t", "ttt");
+////                }
+////            }
+//            );
+//            intent.putExtra("aaa2", myFamilyEntity);
             startActivity(intent);
 //            finishActivity();
         } catch (Exception e) {
