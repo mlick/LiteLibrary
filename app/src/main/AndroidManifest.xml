@@ -43,17 +43,17 @@
         <activity
             android:name="com.mlick.demo.animation.LoadingActivity"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
         <activity
             android:name="com.mlick.demo.rxandroid.rxbus.RxBusDemoActivity">
         </activity>
         <activity
             android:name="com.mlick.demo.animation.ChessPanActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity
             android:name="com.mlick.demo.MainActivity"

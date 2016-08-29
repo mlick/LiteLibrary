@@ -1,6 +1,7 @@
 package com.mlick.demo.animation;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mlick.base.BaseActivity;
 import com.mlick.demo.R;
@@ -47,6 +48,11 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
     public void postionListener(String x, String y) {
 //        Toast.makeText(this, x + "," + y, Toast.LENGTH_SHORT).show();
         postionTv.setText("Click Position : x = " + x + "  y = " + y);
+    }
+
+    @Override
+    public void moreStepListener(String steps) {
+        Toast.makeText(this, steps, Toast.LENGTH_SHORT).show();
     }
 
 }

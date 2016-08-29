@@ -222,4 +222,29 @@ public class ExampleUnitTest implements Serializable {
         System.out.print(Math.round(362 / 66.0));
 
     }
+
+
+    int count = 0;
+
+    @Test
+    public void testThread() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 1000; i++) {
+                    count++;
+                    System.out.println("++ " + count);
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 1000; i++) {
+                    count--;
+                    System.out.println("-- " + count);
+                }
+            }
+        }).start();
+    }
 }

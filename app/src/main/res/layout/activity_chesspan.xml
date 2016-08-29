@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Up : x =    y = "/>
+
     <TextView
         android:id="@+id/postionTv"
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@
     <com.mlick.demo.animation.view.ChessPanView
         android:id="@+id/chessPanView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#A5DC86"/>
 
 </LinearLayout>
