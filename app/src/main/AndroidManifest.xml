@@ -202,5 +202,12 @@
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
             </intent-filter>
         </receiver>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57c8fd61e0f55a8f54002786"></meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="LiteLibrary"/>
     </application>
 </manifest>

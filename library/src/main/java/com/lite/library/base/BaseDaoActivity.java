@@ -76,6 +76,8 @@ public abstract class BaseDaoActivity extends AppCompatActivity implements View.
         return mContent;
     }
 
+
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

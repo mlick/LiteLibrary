@@ -4,32 +4,69 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/downTv"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Down : x =    y = "/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/upTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Up : x =    y = "/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/postionTv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Postion : x =   y = "/>
+            <TextView
+                android:id="@+id/downTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:maxLines="1"
+                android:text="Down : x =    y = "/>
+
+            <TextView
+                android:id="@+id/upTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:maxLines="1"
+                android:text="Up : x =    y = "/>
+
+            <TextView
+                android:id="@+id/postionTv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:maxLines="1"
+                android:text="Postion : x =   y = "/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/restart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="重置"/>
+
+    </LinearLayout>
+
 
     <com.mlick.demo.animation.view.ChessPanView
         android:id="@+id/chessPanView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="360dp"
         android:background="#A5DC86"/>
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/log_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="log日志输出: "/>
+
+    </ScrollView>
 </LinearLayout>

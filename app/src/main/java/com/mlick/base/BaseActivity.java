@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import com.lite.library.base.BaseDaoActivity;
 import com.mlick.demo.R;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -65,6 +66,25 @@ public abstract class BaseActivity extends BaseDaoActivity {
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /**
+         * 页面起始（每个Activity中都需要添加，如果有继承的父Activity中已经添加了该调用，那么子Activity中务必不能添加）
+         * 不能与StatService.onPageStart一级onPageEnd函数交叉使用
+         */
+//        StatService.onResume(this);
+        // 友盟统计
+        MobclickAgent.onResume(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+//        StatService.onPause(this);
+        MobclickAgent.onPause(this);
     }
 
     @Override

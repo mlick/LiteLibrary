@@ -35,87 +35,92 @@ public class LoadUtil {
         int score;
         boolean uflag;
 
-        // square
-        pos.up = (x - 1 >= 1 && cur == map[x - 1][y]) ? true : false;
-        pos.left = (y - 1 >= 1 && cur == map[x][y - 1]) ? true : false;
-        pos.down = (x + 1 <= 5 && cur == map[x + 1][y]) ? true : false;
-        pos.right = (y + 1 <= 5 && cur == map[x][y + 1]) ? true : false;
+        //乘方 四子连成方块
+        pos.left = (x - 1 >= 0 && cur == map[x - 1][y]) ? true : false;
+        pos.up = (y - 1 >= 0 && cur == map[x][y - 1]) ? true : false;
+        pos.right = (x + 1 <= 4 && cur == map[x + 1][y]) ? true : false;
+        pos.down = (y + 1 <= 4 && cur == map[x][y + 1]) ? true : false;
 
-        if ((pos.up || pos.right) && (pos.left || pos.right)) {
-            if (pos.up && pos.left) if (cur == map[x - 1][y - 1]) {
-                //Toast.makeText(null, "乘方", Toast.LENGTH_LONG).show();
-                ret++;
-            }
-            if (pos.up && pos.right) if (cur == map[x - 1][y + 1]) ret++;
-            if (pos.down && pos.left) if (cur == map[x + 1][y - 1]) ret++;
+        if ((pos.up || pos.down) && (pos.left || pos.right)) {
+            if (pos.up && pos.left) if (cur == map[x - 1][y - 1]) ret++;
+            if (pos.down && pos.left) if (cur == map[x - 1][y + 1]) ret++;
+            if (pos.up && pos.right) if (cur == map[x + 1][y - 1]) ret++;
             if (pos.down && pos.right) if (cur == map[x + 1][y + 1]) ret++;
         }
 
 
-        uflag = true;
-        for (i = 0, j = y; i < 5; i++)//5子连珠 对角线 左高右低
-            if (cur != map[i][j]) {
-                uflag = false;
-                break;
-            }
+//        Log.d("LoadUtil", "四子乘方 ： " + ret);
 
-        if (uflag == true) ret += 2;
+        //5子连珠
+        if (y != 0 && y != 4) {//去除上下两个边上的5子连珠
+            uflag = true;
+            for (i = 0, j = y; i < 5; i++)//5子连珠 水平
+                if (cur != map[i][j]) {
+                    uflag = false;
+                    break;
+                }
+            if (uflag == true) ret += 2;
+        }
+        if (x != 0 && x != 4) {//去除左右两个边上的5子连珠
+            uflag = true;
+            for (i = x, j = 0; j < 5; j++)//5子连珠 垂直
+                if (cur != map[i][j]) {
+                    uflag = false;
+                    break;
+                }
+            if (uflag == true) ret += 2;
+        }
 
-        uflag = true;
-        for (i = x, j = 0; j < 5; j++)//5子连珠 对角线 右高左低
-            if (cur != map[i][j]) {
-                uflag = false;
-                break;
-            }
-        if (uflag == true) ret += 2;
+//        Log.d("LoadUtil", "5子连珠 ： " + ret);
 
+        // 3、4、5斜成线 左高右低
         uflag = true;
         score = 0;
-        for (i = x - 1, j = y - 1; i >= 1 && j >= 1; i--, j--)
+        for (i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {//将
             if (cur != map[i][j]) {
                 uflag = false;
                 break;
             } else score++;
+        }
         if (uflag == true) {
-            for (i = x + 1, j = y + 1; i <= 5 && j <= 5; i++, j++)
+            for (i = x + 1, j = y + 1; i <= 4 && j <= 4; i++, j++)
                 if (cur != map[i][j]) {
                     uflag = false;
                     break;
                 } else score++;
             if (uflag == true) switch (score) {
-                case 4:
+                case 4://五子斜连 多加一个子
                     ret++;
-                case 2:
-                case 3:
+                case 2://三子斜连
+                case 3://四子斜连
                     ret++;
                 default:
                     break;
             }
         }
 
+        // 3、4、5斜成线 右高左低
         uflag = true;
         score = 0;
-        for (i = x - 1, j = y + 1; i >= 1 && j <= 5; i--, j++)
+        for (i = x - 1, j = y + 1; i >= 0 && j <= 4; i--, j++)
             if (cur != map[i][j]) {
                 uflag = false;
                 break;
             } else score++;
-        for (i = x + 1, j = y - 1; i <= 5 && j >= 1; i++, j--)
+        for (i = x + 1, j = y - 1; i <= 4 && j >= 0; i++, j--)
             if (cur != map[i][j]) {
                 uflag = false;
                 break;
             } else score++;
         if (uflag == true) switch (score) {
-            case 4:
+            case 4://五子斜连 多加一个子
                 ret++;
-            case 2:
-            case 3:
+            case 2://三子斜连
+            case 3://四子斜连
                 ret++;
-            default:
-                break;
         }
+//        Log.d("LoadUtil", "3、4、5斜里求胜 ： " + ret);
         return ret;
     }
-
 
 }

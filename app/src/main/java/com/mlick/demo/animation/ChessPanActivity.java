@@ -1,13 +1,16 @@
 package com.mlick.demo.animation;
 
+import android.os.Handler;
+import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mlick.base.BaseActivity;
 import com.mlick.demo.R;
 import com.mlick.demo.animation.view.ChessPanView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by lxx on 2016/8/24 11:19
@@ -18,6 +21,8 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
     @BindView(R.id.downTv) TextView downTv;
     @BindView(R.id.upTv) TextView upTv;
     @BindView(R.id.postionTv) TextView postionTv;
+    @BindView(R.id.log_tv) TextView logTv;
+    @BindView(R.id.scrollView) ScrollView scrollView;
 
 //    String downStr = "Down : x =s%    y = s%";
 //    String upStr = "Down : x =s%    y = s%";
@@ -52,7 +57,20 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
 
     @Override
     public void moreStepListener(String steps) {
-        Toast.makeText(this, steps, Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                scrollView.fullScroll(ScrollView.FOCUS_DOWN);
+            }
+        }, 100);
+        logTv.setText(logTv.getText() + "\n" + steps);
+//        Toast.makeText(this, steps, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.restart)
+    public void onClick(View v) {
+        chessPanView.resetChessPan();
+        logTv.setText("log日志输出: ");
     }
 
 }
