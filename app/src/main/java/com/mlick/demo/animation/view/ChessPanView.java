@@ -483,18 +483,24 @@ public class ChessPanView extends View {
         isAddChess = true;
         isEatChess = false;
         isFirstPlayer = true;
+        isMove = false;
         panDatas = new int[5][5];
         mSPostionX = 0;
         mSPostionY = 0;
+        firstSteps = 0;
+        secondSteps = 0;
         isSeleced = false;
         isGameOver = false;
         drawTextStr = "当前用户：白";
         invalidate();
-
 //        testAllPan();
     }
 
-    private void testAllPan() {
+
+    /**
+     * 测试初始化所有的棋盘
+     */
+    public void testAllPan() {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if ((i + j) % 2 == 0) {

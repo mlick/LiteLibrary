@@ -3,6 +3,7 @@ package com.mlick.demo;
 import android.app.Application;
 import android.util.Log;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.jpush.android.api.JPushInterface;
@@ -31,5 +32,7 @@ public class DemoApplication extends Application {
                 .setScenarioType(getApplicationContext(), MobclickAgent.EScenarioType.E_UM_NORMAL);
         //友盟统计 禁止默认的页面统计方式，这样将不会再自动统计Activity
         MobclickAgent.openActivityDurationTrack(false);
+
+        Fresco.initialize(this);
     }
 }

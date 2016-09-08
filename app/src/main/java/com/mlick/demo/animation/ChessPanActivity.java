@@ -11,6 +11,7 @@ import com.mlick.demo.animation.view.ChessPanView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 
 /**
  * Created by lxx on 2016/8/24 11:19
@@ -35,6 +36,15 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
     @Override
     public void initViewData() {
         chessPanView.onTouchEventListent = this;
+////        Uri uri = Uri
+////                .parse("http://img1.ph.126.net/YBfF5kkH-4ouHNxVu7Skpg==/6598082416865500891.gif");
+//        Uri uri = Uri.parse("res://" + getPackageName() + "/" + R.drawable.icon_of_no_data);
+//        SimpleDraweeView draweeView = (SimpleDraweeView) findViewById(R.id.my_image_view);
+////        draweeView.setImageURI(uri);
+//        DraweeController draweeController = Fresco.newDraweeControllerBuilder().setUri(uri)
+//                                                  .setAutoPlayAnimations(true) // 设置加载图片完成后是否直接进行播放
+//                                                  .build();
+//        draweeView.setController(draweeController);
     }
 
     @Override
@@ -69,8 +79,17 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
 
     @OnClick(R.id.restart)
     public void onClick(View v) {
+
         chessPanView.resetChessPan();
         logTv.setText("log日志输出: ");
+    }
+
+    @OnLongClick(R.id.restart)
+    public boolean onLongClick(View view) {
+        chessPanView.resetChessPan();
+        logTv.setText("log日志输出: ");
+        chessPanView.testAllPan();
+        return true;
     }
 
 }
