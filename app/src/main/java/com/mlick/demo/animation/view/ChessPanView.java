@@ -497,6 +497,10 @@ public class ChessPanView extends View {
     }
 
 
+    public boolean isGameOver() {
+        return isGameOver;
+    }
+
     /**
      * 测试初始化所有的棋盘
      */

@@ -79,7 +79,6 @@ public class ChessPanActivity extends BaseActivity implements ChessPanView.OnTou
 
     @OnClick(R.id.restart)
     public void onClick(View v) {
-
         chessPanView.resetChessPan();
         logTv.setText("log日志输出: ");
     }
