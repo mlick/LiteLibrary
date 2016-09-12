@@ -22,6 +22,8 @@ public class MainActivity extends ListActivity {
             /*6*/{"ProgressAnimationActivity", "animation.ProgressAnimationActivity", "进度条动画"},
             /*7*/{"RoundArcActivity", "animation.RoundArcActivity", "半圆动画"},
             /**/{"ListDemoActivity", "recyclerview.ListDemoActivity", "RecyclerView的demo"},
+            /**/{"ChessPanActivity", "animation.ChessPanActivity", "五步棋"},
+            /**/{"ProgressWebView", "other.ProgressWebViewActivity", "带进度条的WebView"},
             /**/{"OtherActivity1", "other.jiankangduoduo.PlayBodyFatScalesActivity", "其它demo"}
     /**/};
 

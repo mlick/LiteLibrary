@@ -30,6 +30,7 @@
             android:layout_height="200dp"/>
 
         <com.mlick.demo.animation.view.RadarView2
+            android:id="@+id/radarView2"
             android:layout_width="300dp"
             android:layout_height="200dp"/>
 

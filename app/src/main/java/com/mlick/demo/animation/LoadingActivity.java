@@ -58,26 +58,11 @@ public class LoadingActivity extends BaseActivity {
      * 跳转到首页
      */
     private void gotoMain() {
-        Intent intent = new Intent();
-//            Class<?> clzz = (Class<?>) Class.forName("MainActivity").newInstance();
-//            intent.setClass(this, Class.forName("MainActivity"));
         try {
-            intent.setClassName("com.mlick.demo", "com.mlick.demo.MainActivity");
-//            SerBean object = new SerBean(new SerBean2());
-//            object.setString("1111111");
-//            intent.putExtra("aaa", object);
-//            MyFamilyEntity myFamilyEntity = new MyFamilyEntity();
-//            myFamilyEntity.setSerBean2(new SerBean2()
-////            {
-////                @Override
-////                public void test() {
-////                    Log.d("t", "ttt");
-////                }
-////            }
-//            );
-//            intent.putExtra("aaa2", myFamilyEntity);
+            Intent intent = new Intent();
+            intent.setClassName(getPackageName(), "com.mlick.demo.MainActivity");
             startActivity(intent);
-//            finishActivity();
+            finishActivity();
         } catch (Exception e) {
             e.printStackTrace();
         }

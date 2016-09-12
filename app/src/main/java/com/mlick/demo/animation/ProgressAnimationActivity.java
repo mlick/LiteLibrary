@@ -7,6 +7,7 @@ import com.mlick.base.BaseActivity;
 import com.mlick.demo.R;
 import com.mlick.demo.animation.view.ProgressAnimationView;
 import com.mlick.demo.animation.view.ProgressAnimationView2;
+import com.mlick.demo.animation.view.RadarView2;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,6 +19,7 @@ public class ProgressAnimationActivity extends BaseActivity {
 
     @BindView(R.id.animation) ProgressAnimationView animationView;
     @BindView(R.id.animation2) ProgressAnimationView2 animationView2;
+    @BindView(R.id.radarView2) RadarView2 radarView2;
 
     @Override
     public int getLayoutId() {
@@ -56,15 +58,23 @@ public class ProgressAnimationActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         if (animationView != null) {
-            Log.d("ProgressAniActivity", "OnDestroy");
+            Log.d("ProgressAniActivity", "OnDestroy animationView");
             animationView.stopAnimation();
         }
+
         if (animationView2 != null) {
-            Log.d("ProgressAniActivity", "OnDestroy");
+            Log.d("ProgressAniActivity", "OnDestroy animationView2");
             animationView2.stopAnimation();
         }
+
+        if (radarView2 != null) {
+            radarView2.stopScan();
+        }
+
+        radarView2 = null;
         animationView = null;
         animationView2 = null;
+        Log.d("ProgressAniActivity", "OnDestroy");
         super.onDestroy();
     }
 }

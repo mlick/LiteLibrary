@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
+import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -78,7 +79,6 @@ public class RadarView2 extends View {
     public RadarView2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
-        post(run);
     }
 
 
@@ -178,10 +178,38 @@ public class RadarView2 extends View {
         this.maxScanItemCount = maxScanItemCount;
     }
 
-    /**
-     * 开始扫描
-     */
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        startScan();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        stopScan();
+    }
+
+    @Override
+    protected void onVisibilityChanged(@NonNull View changedView, int visibility) {
+        super.onVisibilityChanged(changedView, visibility);
+        if (visibility == View.VISIBLE) {
+            startScan();
+        } else {
+            stopScan();
+        }
+    }
+
+    /** 开始扫描 */
     public void startScan() {
         this.startScan = true;
+        post(run);
+    }
+
+    /** 停止扫票 */
+    public void stopScan() {
+        this.startScan = false;
+        removeCallbacks(run);
     }
 }
