@@ -1,0 +1,1 @@
+{"traces":[{"acceptTime":"2016-10-06 11:18:52","acceptAddress":"广东测试1","action":"SIGNED","remark":"已签收，签收人是图片上传签收网点是广东测试1"}]}
